@@ -2,8 +2,7 @@ import React from 'react';
 import './Navbar.css';
 import image_logo from "./logo.webp";
 import image_profile from "./Profile.jpeg";
-// import { Link } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
@@ -19,9 +18,9 @@ function Navbar() {
 
                 <a href="/#" className="Navbar-link">HomePage</a>
                 <a href="/#" className="Navbar-link">Places</a>
-                <a href="/#" className="Navbar-link">Guide</a>
-                <a href="/#" className="Navbar-link">knownTheUnknown</a>
-
+                
+                <Link className='Navbar-link' to='/Guidesearch'>Guide</Link>
+                <Link className='Navbar-link' to='/KnowTheUnknown'>KnowTheUnknown</Link>
             </div>
             <div className="profile">
                 <img className="profileImage-Navbar" src={image_profile} alt="" />
@@ -29,4 +28,4 @@ function Navbar() {
         </nav>
     );
 }
-export default Navbar;
+export default Navbar;

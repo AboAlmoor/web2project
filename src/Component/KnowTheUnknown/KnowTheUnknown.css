@@ -11,12 +11,6 @@
     margin-top: 20px;
 }
 
-/* .paragraph {
-    width: 100%;
-    text-align: center;
-    margin: 20px 0;
-} */
-
 .heading {
     position: absolute;
     top: 300px;
@@ -64,7 +58,7 @@
     font-size: 28px;
     position: absolute;
     padding-left: 30px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .carousel-item {
@@ -132,7 +126,7 @@
 }
 
 .carousel-item__details span {
-    height: 10px; 
+    height: 10px;
     font-size: 0.9rem;
     color: #2ecc71;
 }
@@ -144,5 +138,5 @@
 .carousel-item_details .carousel-item_details--title,
 .carousel-item__details--subtitle {
     color: #fff;
-    margin: 5px 0;
+    margin: 5px 0;
 }

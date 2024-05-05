@@ -1,14 +1,9 @@
 import React from "react";
 import { Rating } from "react-simple-star-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faInstagram,
-  faTwitter,
-  faWhatsapp,
-} from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram, faTwitter, faWhatsapp, } from "@fortawesome/free-brands-svg-icons";
 import "./gideprofile.css";
-
+import Navber from '../Navbar/Navbar'
 // Header
 const Header = ({ guide, initialRating }) => {
   const [ratingValue, setRatingValue] = React.useState(initialRating);
@@ -141,12 +136,14 @@ function App() {
   };
 
   return (
-    <div className="profile-container">
-      <Header guide={guideInfo} initialRating={100} />
-      <About guide={guideInfo} />
-      <SocialMediaLinks links={guideInfo.socialLinks} />
+    <div>
+      <Navber />
+      <div className="profile-container">
+        <Header guide={guideInfo} initialRating={100} />
+        <About guide={guideInfo} />
+        <SocialMediaLinks links={guideInfo.socialLinks} />
+      </div>
     </div>
   );
 }
-
 export default App;

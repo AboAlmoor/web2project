@@ -1,6 +1,9 @@
 import React from 'react';
 import './KnowTheUnknown.css';
 import BackGround_image from './BackGroundImage.jpeg';
+import Navbar from "../Navbar/Navbar";
+// import { Link } from 'react-router-dom';
+
 
 const carouselItems = [
     {
@@ -41,33 +44,33 @@ const carouselItems = [
 ];
 
 function ImageCarousel() {
-
     return (
-        <div className="container">
-            <h1 className="heading">Known The Unknown</h1>
-            <img className="large-image" src={BackGround_image} alt="" />
+        <div>
+            <Navbar />
+            <div className="container">
+                <h1 className="heading">Known The Unknown</h1>
+                <img className="large-image" src={BackGround_image} alt="" />
 
-            <section className="carousel">
-                <h2 className="categories__title">Our Secret Places</h2>
-                <div className="carousel__container">
-                    {carouselItems.map((item, index) => (
-                        <div className="carousel-item" key={index}>
-                            <img className="carousel-item__img" src={item.imageUrl} alt="people" />
-                            <div className="carousel-item__details">
-                                <div className="controls">
-                                    <span className="fas fa-play-circle"></span>
-                                    <span className="fas fa-plus-circle"></span>
+                <section className="carousel">
+                    <h2 className="categories__title">Our Secret Places</h2>
+                    <div className="carousel__container">
+                        {carouselItems.map((item, index) => (
+                            <div className="carousel-item" key={index}>
+                                <img className="carousel-item__img" src={item.imageUrl} alt="people" />
+                                <div className="carousel-item__details">
+                                    <div className="controls">
+                                        <span className="fas fa-play-circle"></span>
+                                        <span className="fas fa-plus-circle"></span>
+                                    </div>
+                                    <h5 className="carousel-item__details--title">{item.title}</h5>
+                                    <h6 className="carousel-item__details--subtitle">{item.subtitle}</h6>
                                 </div>
-                                <h5 className="carousel-item__details--title">{item.title}</h5>
-                                <h6 className="carousel-item__details--subtitle">{item.subtitle}</h6>
                             </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-        
-        
+                        ))}
+                    </div>
+                </section>
+            </div>
         </div>
     );
 }
-export default ImageCarousel;
+export default ImageCarousel;
