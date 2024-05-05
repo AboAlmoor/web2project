@@ -6,6 +6,7 @@ import FindAccount from './Component/ForgetPassword/ForgetPassword';
 import Guidesearch from './Component/Guidepage/Guidesearch';
 import GuideProfile from './Component/GuideProfile/gideprofile'; 
 import ImageCarousel from "./Component/KnowTheUnknown/KnowTheUnknown";
+import Navbar from "./Component/Navbar/Navbar";
 
 function App() {
   return (
@@ -19,9 +20,11 @@ function App() {
           <Route path="/guideprofile" element={<GuideProfile />} />
         </Routes>
       </Router>
+      <Navbar/>
       <ImageCarousel/>
     </div>
   );
 }
+export default App;
 
-export default App;
+
