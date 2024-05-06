@@ -1,30 +1,29 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LogIn from './Component/LogIn/LogIn';
-import CreateAcount from './Component/CreateAcount/CreateAcount';
-import FindAccount from './Component/ForgetPassword/ForgetPassword';
-import Guidesearch from './Component/Guidepage/Guidesearch';
-import GuideProfile from './Component/GuideProfile/gideprofile';
-import ImageCarousel from "./Component/KnowTheUnknown/KnowTheUnknown";
-// import Navbar from "./Component/Navbar/Navbar";
+
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import MainNavbar1 from './Component/MainPage/MainNavbar1';
+import MainFooter from './Component/MainPage/MainFooter';
+import MainIcons from './Component/MainPage/MainIcons';
+import MainCards from './Component/MainPage/MainCards';
+import MainFeatures1 from './Component/MainPage/MainFeatures1';
+
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route index path="/" element={<LogIn />} />
-          <Route index path="/CreateAcount" element={<CreateAcount />} />
-          <Route index path="/ForgetPassword" element={<FindAccount />} />
-          <Route path="/guidesearch" element={<Guidesearch />} />
-          <Route path="/guideprofile" element={<GuideProfile />} />
-          <Route path="/KnowTheUnknown" element={<ImageCarousel />} />
-        </Routes>
-      </Router>
-      {/* <ImageCarousel/> */}
+    <div>
+      <MainNavbar1/>
+      <div className='bg'>
+        <MainIcons/>
+        <MainCards/>
+       <MainFeatures1/>
+       
+      </div>
+     
+      <MainFooter/>
     </div>
   );
 }
-export default App;
 
+export default App;
 
