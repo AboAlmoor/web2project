@@ -5,8 +5,15 @@ import './MainNavbar.css';
 import Alaqsa from './Alaqsa.png'
 import logo from './logo.png'
 import { BsPersonCircle } from "react-icons/bs";
+import { Link , useNavigate} from 'react-router-dom';
+
 
 function MainNavbar1() {
+
+    const navigate = useNavigate();
+    const handleshowprofile = () => {
+        navigate("/ProfileComponents");
+      };
   return (
    <div className='' 
     style={{
@@ -21,7 +28,7 @@ function MainNavbar1() {
                 <div className='navbar'>
                     <Navbar bg="light" expand="lg" className="shadow" >
                         <Container>
-                            <Navbar.Brand href="#home">
+                            <Navbar.Brand href="#home" >
                           
                             <Navbar.Brand href="#home">
                               <img src={logo} alt="Logo" className="logo" />
@@ -38,10 +45,12 @@ function MainNavbar1() {
                                     <Nav.Link href="#pricing"><div className='nav_pages'>Pricing</div></Nav.Link>
                                 </Nav>
                                 <Nav>
-                                    <Nav.Link href="#signin"> <div className='sign_in'>Sign in</div></Nav.Link>
-                                    <Button variant="outline-primary" href="#signup">Sign up</Button>
+                                    <Link to ="/LogIn"> <div className='sign_in'>Sign in</div></Link>
+                                    <Link to = "/CreateAcount">
+                                    <Button variant="outline-primary" >Sign up</Button>
+                                    </Link>
                                     <Nav.Item className="ml-auto profile-nav-item">
-                                        <button className="profile-button" onClick={() => {/* handle click event */}}>
+                                        <button className="profile-button" onClick={handleshowprofile}>
                                             <BsPersonCircle className='profile-logo' style={{ color: 'white' }} />
                                         </button>
                                     </Nav.Item> 
@@ -67,7 +76,7 @@ function MainNavbar1() {
                     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
                     <div className="search-container">
                         <input type="text" name="search" placeholder="Search for a name of a city..." className="search-input" />
-                        <a href="#" className="search-btn">
+                        <a href="#/" alt=" " className="search-btn">
                         <i className="fas fa-search" />      
                         </a>
                     </div>

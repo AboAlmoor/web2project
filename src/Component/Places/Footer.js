@@ -25,7 +25,7 @@ const FooterPlaces = () => {
                                     action="#"
                                     className="f_subscribe_two mailchimp"
                                     method="post"
-                                    noValidate="true"
+                                    noValidate={true}
                                     _lpchecked={1}
                                 >
                                     <input
@@ -55,22 +55,22 @@ const FooterPlaces = () => {
                                 <h3 className="f-title f_600 t_color f_size_18" id="ft_h3">Download</h3>
                                 <ul className="list-unstyled f_list">
                                     <li>
-                                        <a href="#" target="-blannk" title="go to " >Company</a>
+                                        <a href="#/" alt=" " target="-blannk" title="go to " >Company</a>
                                     </li>
                                     <li>
-                                        <a href="#" target="-blannk" title="go to " >Android App</a>
+                                        <a href="#/" alt=" " target="-blannk" title="go to " >Android App</a>
                                     </li>
                                     <li>
-                                        <a href="#" target="-blannk" title="go to " >ios App</a>
+                                        <a href="#/" alt=" " target="-blannk" title="go to " >ios App</a>
                                     </li>
                                     <li>
-                                        <a href="#" target="-blannk" title="go to " >Desktop</a>
+                                        <a href="#/" alt=" " target="-blannk" title="go to " >Desktop</a>
                                     </li>
                                     <li>
-                                        <a href="#" target="-blannk" title="go to " >Projects</a>
+                                        <a href="#/" alt=" " target="-blannk" title="go to " >Projects</a>
                                     </li>
                                     <li>
-                                        <a href="#" target="-blannk" title="go to " >My tasks</a>
+                                        <a href="#/" alt=" " target="-blannk" title="go to " >My tasks</a>
                                     </li>
                                 </ul>
                             </div>
@@ -88,22 +88,22 @@ const FooterPlaces = () => {
                                 <h3 className="f-title f_600 t_color f_size_18" id="ft_h3">Help</h3>
                                 <ul className="list-unstyled f_list">
                                     <li>
-                                    <a href="#" target="-blannk" title="go to " >FAQ</a>
+                                    <a href="#/" alt=" " target="-blannk" title="go to " >FAQ</a>
                                     </li>
                                     <li>
-                                    <a href="#" target="-blannk" title="go to " >Term &amp; conditions</a>
+                                    <a href="#/" alt=" " target="-blannk" title="go to " >Term &amp; conditions</a>
                                     </li>
                                     <li>
-                                    <a href="#" target="-blannk" title="go to " >Reporting</a>
+                                    <a href="#/" alt=" " target="-blannk" title="go to " >Reporting</a>
                                     </li>
                                     <li>
-                                    <a href="#" target="-blannk" title="go to " >Documentation</a>
+                                    <a href="#/" alt=" " target="-blannk" title="go to " >Documentation</a>
                                     </li>
                                     <li>
-                                    <a href="#" target="-blannk" title="go to " >Support Policy</a>
+                                    <a href="#/" alt=" " target="-blannk" title="go to " >Support Policy</a>
                                     </li>
                                     <li>
-                                    <a href="#" target="-blannk" title="go to " >Privacy</a>
+                                    <a href="#/" alt=" " target="-blannk" title="go to " >Privacy</a>
                                     </li>
                                 </ul>
                             </div>
@@ -120,22 +120,22 @@ const FooterPlaces = () => {
                             >
                                 <h3 className="f-title f_600 t_color f_size_18" id="ft_h3">Team Solutions</h3>
                                 <div className="f_social_icon">
-                                    <div class="text-center">
-                                        <a href="#" class="d-inline-block m-2 rounded-circle bg-light text-center">
+                                    <div className="text-center">
+                                        <a href="#/" alt=" " className="d-inline-block m-2 rounded-circle bg-light text-center">
 
-                                            <i class="fab fa-facebook-f"></i>
+                                            <i className="fab fa-facebook-f"></i>
                                         </a>
-                                        <a href="#" class="d-inline-block m-2 rounded-circle bg-light text-center">
+                                        <a href="#/" alt=" " className="d-inline-block m-2 rounded-circle bg-light text-center">
 
-                                            <i class="fab fa-twitter"></i>
+                                            <i className="fab fa-twitter"></i>
                                         </a>
-                                        <a href="#" class="d-inline-block m-2 rounded-circle bg-light text-center">
+                                        <a href="#/" alt=" " className="d-inline-block m-2 rounded-circle bg-light text-center">
 
-                                            <i class="fab fa-linkedin-in"></i>
+                                            <i className="fab fa-linkedin-in"></i>
                                         </a>
-                                        <a href="#" class="d-inline-block m-2 rounded-circle bg-light text-center">
+                                        <a href="#/" alt=" " className="d-inline-block m-2 rounded-circle bg-light text-center">
                                             
-                                            <i class="fab fa-pinterest-p"></i>
+                                            <i className="fab fa-pinterest-p"></i>
                                         </a>
                                     </div>
 

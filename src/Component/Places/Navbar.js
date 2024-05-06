@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Navbar.css'
-import NavImage from '../ddd.jpg';
+import NavImage from './ddd.jpg';
 
 
 const Navbar = () => {

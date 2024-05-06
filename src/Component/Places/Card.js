@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col} from 'react-bootstrap';
 import './Card.css';
-import jerusalemImage from '../ddd.jpg';
+import jerusalemImage from './ddd.jpg';
 
 
 const MainPage = () => {

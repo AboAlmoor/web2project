@@ -25,7 +25,7 @@ const FooterPlaces = () => {
                                     action="#"
                                     className="f_subscribe_two mailchimp"
                                     method="post"
-                                    noValidate="true"
+                                    noValidate={true}
                                     _lpchecked={1}
                                 >
                                     <input
@@ -120,22 +120,22 @@ const FooterPlaces = () => {
                             >
                                 <h3 className="f-title f_600 t_color f_size_18" id="ft_h3">Team Solutions</h3>
                                 <div className="f_social_icon">
-                                    <div class="text-center">
-                                        <a href="#/" class="d-inline-block m-2 rounded-circle bg-light text-center" alt=' '>
+                                    <div className="text-center">
+                                        <a href="#/" className="d-inline-block m-2 rounded-circle bg-light text-center" alt=' '>
 
-                                            <i class="fab fa-facebook-f"></i>
+                                            <i className="fab fa-facebook-f"></i>
                                         </a>
-                                        <a href="#/" class="d-inline-block m-2 rounded-circle bg-light text-center" alt=' '>
+                                        <a href="#/" className="d-inline-block m-2 rounded-circle bg-light text-center" alt=' '>
 
-                                            <i class="fab fa-twitter"></i>
+                                            <i className="fab fa-twitter"></i>
                                         </a>
-                                        <a href="#/" class="d-inline-block m-2 rounded-circle bg-light text-center" alt=' '>
+                                        <a href="#/" className="d-inline-block m-2 rounded-circle bg-light text-center" alt=' '>
 
-                                            <i class="fab fa-linkedin-in"></i>
+                                            <i className="fab fa-linkedin-in"></i>
                                         </a>
-                                        <a href="#/" class="d-inline-block m-2 rounded-circle bg-light text-center" alt=' '>
+                                        <a href="#/" className="d-inline-block m-2 rounded-circle bg-light text-center" alt=' '>
                                             
-                                            <i class="fab fa-pinterest-p"></i>
+                                            <i className="fab fa-pinterest-p"></i>
                                         </a>
                                     </div>
 

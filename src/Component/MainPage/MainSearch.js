@@ -8,7 +8,7 @@ function MainSearch() {
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
   <div className="search-container">
     <input type="text" name="search" placeholder="Search..." className="search-input" />
-    <a href="#" className="search-btn">
+    <a href="#/" alt =" " className="search-btn">
       <i className="fas fa-search" />      
     </a>
   </div>

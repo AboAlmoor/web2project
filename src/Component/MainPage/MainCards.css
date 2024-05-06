@@ -1,19 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
-main-green: #79dd09 !default;
-main-green-rgb-015: rgba(121, 221, 9, 0.1) !default;
-main-yellow: #bdbb49 !default;
-main-yellow-rgb-015: rgba(189, 187, 73, 0.1) !default;
-main-red: #bd150b !default;
-main-red-rgb-015: rgba(189, 21, 11, 0.1) !default;
-main-blue: #0076bd !default;
-main-blue-rgb-015: rgba(0, 118, 189, 0.1) !default;
-/* This pen */
-body {
-	font-family: "Baloo 2", cursive;
-	font-size: 16px;
-	color: #ffffff;
-	text-rendering: optimizeLegibility;
-	font-weight: initial;
+:root {
+  --main-green: #79dd09;
+  --main-green-rgb-015: rgba(121, 221, 9, 0.1);
+  --main-yellow: #bdbb49;
+  --main-yellow-rgb-015: rgba(189, 187, 73, 0.1);
+  --main-red: #bd150b;
+  --main-red-rgb-015: rgba(189, 21, 11, 0.1);
+  --main-blue: #0076bd;
+  --main-blue-rgb-015: rgba(0, 118, 189, 0.1);
 }
 
 .dark {
