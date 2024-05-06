@@ -1,3 +1,4 @@
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,6 +14,13 @@ import FreePlanComponent from './Component/Places/freePlanComponent/FreePlanComp
 import Header from './Component/Places/header/Header';
 import Navbar from './Component/Places/navbar/Navbar';
 
+import Footnotes from './Component/Restaurant/Footnotes/Footnotes'
+
+
+import FooterPlaces from './Component/Restaurant/Footer_res/Footer';
+import MultipleCards from './Component/Restaurant/card_supporter/MultipleCards';
+import DataCard from './Component/Restaurant/card_all_restaurants/Card_group';
+import Header_res from './Component/Restaurant/Header_res/Header_res';
 
 
 
@@ -30,6 +38,11 @@ const App = () => {
       <Header/>
       <MainPage/>
       <FreePlanComponent/>
+      <FooterPlaces/>
+      <Header_res/>
+      <MultipleCards/>
+      <DataCard/>
+      <Footnotes/>
       <FooterPlaces/>
     </div>
   );
