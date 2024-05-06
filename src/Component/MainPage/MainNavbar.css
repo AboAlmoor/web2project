@@ -1,0 +1,141 @@
+.navbar{
+
+    width: 100%;
+    background-color: transparent !important;
+    transition: background-color 0.3s ease-in-out;
+  
+
+}
+
+.navbar:hover {
+    background-color: rgba(255, 255, 255, 0.8); 
+}
+
+
+.search{
+
+    width: auto;
+    margin-left: auto;
+    margin-right: auto ;
+ }
+ 
+
+
+.search-container{
+    background: #fff;
+    height: 30px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.8s;
+    
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.search-container:hover > .search-input{
+    width: 400px;
+}
+
+.search-container .search-input{
+    background: transparent;
+    border: none;
+    outline:none;
+    width: 0px;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.8s;
+
+}
+
+.search-container .search-btn .fas{
+    color: #5cbdbb;
+}
+
+@keyframes hoverShake {
+  0% {transform: skew(0deg,0deg);}
+  25% {transform: skew(5deg, 5deg);}
+  75% {transform: skew(-5deg, -5deg);}
+  100% {transform: skew(0deg,0deg);}
+}
+
+.search-container:hover{
+  animation: hoverShake 0.15s linear 3;
+}
+
+
+.mainpage-header{
+    font-size: 70px;
+    font-style: oblique;
+    color: white;
+    text-align: center;
+   
+    position: relative;
+    margin-top: 50px;
+    
+}
+
+
+.sign_in{
+
+  color:whitesmoke;
+
+
+}
+
+.nav_pages{
+
+  color:whitesmoke;
+
+
+}
+
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
+  object-fit: cover;
+  margin-top: 27px;
+  margin-right: 80px;
+}
+
+.profile-logo{
+
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; 
+  object-fit: cover; 
+  margin-left: 190px;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+
+.profile-nav-item {
+  margin-left: auto;  /* Pushes the button to the right of the navbar */
+}
+
+.navbar-collapse {
+  justify-content: space-between;  /* This will help distribute space evenly */
+}
+
+
+@media (max-width: 992px) {  /* Adjust based on the Bootstrap breakpoint you are using */
+  .profile-nav-item {
+      margin-left: 0;  /* Adjust as necessary for smaller screens */
+      padding-right: 15px;  /* Adds padding on the right for spacing */
+  }
+}
