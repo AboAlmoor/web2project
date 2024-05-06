@@ -1,30 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LogIn from './Component/LogIn/LogIn';
-import CreateAcount from './Component/CreateAcount/CreateAcount';
-import FindAccount from './Component/ForgetPassword/ForgetPassword';
-import Guidesearch from './Component/Guidepage/Guidesearch';
-import GuideProfile from './Component/GuideProfile/gideprofile';
-import ImageCarousel from "./Component/KnowTheUnknown/KnowTheUnknown";
-// import Navbar from "./Component/Navbar/Navbar";
 
-function App() {
+import MainPage from './Component/Places/card/Card';
+import FooterPlaces from './Component/Places/footer/Footer';
+import FreePlanComponent from './Component/Places/freePlanComponent/FreePlanComponent';
+import Header from './Component/Places/header/Header';
+import Navbar from './Component/Places/navbar/Navbar';
+
+const App = () => {
   return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route index path="/" element={<LogIn />} />
-          <Route index path="/CreateAcount" element={<CreateAcount />} />
-          <Route index path="/ForgetPassword" element={<FindAccount />} />
-          <Route path="/guidesearch" element={<Guidesearch />} />
-          <Route path="/guideprofile" element={<GuideProfile />} />
-          <Route path="/KnowTheUnknown" element={<ImageCarousel />} />
-        </Routes>
-      </Router>
-      {/* <ImageCarousel/> */}
-    </div>
+    <>
+      <Navbar/>
+      <Header/>
+      <MainPage/>
+      <FreePlanComponent/>
+      <FooterPlaces/>
+    </>
   );
-}
+};
+
 export default App;
 
 
