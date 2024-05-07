@@ -18,30 +18,30 @@ function CreateAccount() {
     return (
         <div className='CenteredContainer'>
             <div className="ContainerCreateAcount" >
-                <h1 className='CreateAcount' >CREATE ACCOUNT</h1>
-                <p className='WebsiteName'>Secrets Of Cities In Palestine</p>
-                <form className='Username_Email_Password_ConfirmPassword'>
-                    <label className='labelInput' htmlFor="username">Username</label>
+                <h1 className='CreateAcountHeader1' >CREATE ACCOUNT</h1>
+                <p className='WebsiteNameCreateAcount'>Secrets Of Cities In Palestine</p>
+                <form className='Username_Email_Password_ConfirmPassword_Country'>
+                    <label className='labelInputCreateAcount' htmlFor="username">Username</label>
                     <input type="text" className="CreateAcountUsername" name="username" placeholder="username" required />
 
-                    <label className='labelInput' htmlFor="email">Email</label>
+                    <label className='labelInputCreateAcount' htmlFor="email">Email</label>
                     <input type="email" className="CreateAcountEmail" name="email" placeholder="email" required />
 
-                    <div className="password-container">
-                        <label className='labelInput' htmlFor="password">Password</label>
+                    <div className="passwordContainerCreateAcount">
+                        <label className='labelInputCreateAcount' htmlFor="password">Password</label>
                         <input type={showPassword ? 'text' : 'password'} className="CreateAcountPassword" name="password" placeholder="password" required />
-                        <svg id="togglePassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye-fill password-icon" viewBox="0 0 16 16" onClick={togglePassword}>
+                        <svg id="togglePassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye-fill passwordIconCreateAcount" viewBox="0 0 16 16" onClick={togglePassword}>
                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
                             <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
                         </svg>
                     </div>
 
-                    <label className='labelInput' htmlFor="confirm_password">Confirm Password</label>
+                    <label className='labelInputCreateAcount' htmlFor="confirm_password">Confirm Password</label>
                     <input type="password" className="ConfirmPasswordCreateAcount" name="confirm_password" placeholder="confirm password" required />
 
-                    <label className='labelInput' htmlFor="country">Country</label>
-                    <select className='allCountry' id="country" name="country">
-                        <option value="" disabled selected>Select your country</option>
+                    <label className='labelInputCreateAcount' htmlFor="country">Country</label>
+                    <select className='allCountryCreateAcount' id="country" name="country" defaultValue="" required>
+                        <option value="" disabled>Select your country</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Åland Islands</option>
                         <option value="AL">Albania</option>
@@ -291,7 +291,7 @@ function CreateAccount() {
                         <option value="ZM">Zambia</option>
                         <option value="ZW">Zimbabwe</option>
                     </select>
-                    <button className="buttonSignUp" type="submit">SIGN UP</button>
+                    <button className="buttonSignUpCreateAccount" type="submit">SIGN UP</button>
                 </form>
                 <Link to='/CreateAccount' />
             </div>

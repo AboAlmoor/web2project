@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { TbLogout } from "react-icons/tb";
 import { FaUserEdit } from "react-icons/fa"; 
-import './ProfileCover.css';
 import { useNavigate } from "react-router-dom";
 import SecondNavbar from './SecondNavbar';
 import Navbar from '../Navbar/Navbar';
+import '../UserProfile/ProfileCover.css';
 
 
 const ProfileCover = () => {
@@ -13,6 +13,11 @@ const ProfileCover = () => {
 
     const handleshowprofile = () => {
         navigate("/EditProfile");
+    };
+
+
+    const Handleshowprofile = () => {
+        navigate("/Login");
     };
 
     const [isActive, setIsActive] = useState(false);
@@ -24,10 +29,10 @@ const ProfileCover = () => {
     return (
         <div> 
             <Navbar/>
-        <div className="bb">
-            <div className="row">
-                <div className="col">
-                    <div className="profileBackground background-image">
+        <div>
+            <div>
+                <div>
+                    <div className="profileBackgroundsaleh background-image">
                         <img
                             className="card-img-top big-profile-photo"
                             src="https://mrahkat.net/wp-content/uploads/2019/05/2182.png"
@@ -36,12 +41,12 @@ const ProfileCover = () => {
                         />
                     </div>
                     <div className="d-flex mt-1 justify-content-end" style={{ marginRight: "80px", position: "relative" }}>
-                        <div className={`menu ${isActive ? 'open' : ''}`} style={{ position: "absolute", right: 0, zIndex: 999 }} onClick={toggleActive}>
-                            <div className="menu-button">
+                        <div className={`menuAmeer ${isActive ? 'open' : ''}`} style={{ position: "absolute", right: 0, zIndex: 999 }} onClick={toggleActive}>
+                            <div className="menuAmeer-button" onClick={Handleshowprofile}>
                                 <TbLogout size={24} color="red" />
                             </div>
                             <div>
-                                <button className="menu-button" onClick={handleshowprofile}>
+                                <button className="menuAmeer-button" onClick={handleshowprofile}>
                                     <FaUserEdit size={24} color="blue" />
                                 </button>
                             </div>

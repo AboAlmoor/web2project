@@ -115,13 +115,13 @@ function Guidesearch() {
           </form>
 
           <div className="tourguidecardscontainer">
-            <div className="box">
+            <div className="tourguidebox">
               {filteredCards.map((card, index) => (
-                <div className="card" key={index}>
+                <div className="tourguidecard" key={index}>
                   <div className="imgBx">
                     <img src={card.imageUrl} alt="CardImg" />
                   </div>
-                  <div className="details">
+                  <div className="tourguidedetails">
                     <h2>
                       {card.name}
                       <br />

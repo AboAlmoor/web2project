@@ -1,25 +1,25 @@
-.navbar {
+.SecondNavbar {
     background-color: #333;
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
 }
 
-.logo .logoImage-Navbar {
+.LogoSecondNavbar .logoImage-Navbar {
     width: 50px;
     border-radius: 50%;
 }
 
-.links {
-    flex: 1; 
+.LinksRouter {
+    flex: 1;
     display: flex;
-    justify-content: center; 
-    margin-top: 10px; 
+    justify-content: center;
+    margin-top: 10px;
 }
 
-.links .Navbar-link {
+.LinksRouter .SecondNavbar-link {
     color: white;
     text-decoration: none;
     padding: 10px 20px;
@@ -27,31 +27,44 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.links .Navbar-link:hover {
+.LinksRouter .SecondNavbar-link:hover {
     color: rgb(222, 168, 62);
     text-decoration: underline;
 }
 
-.profile .profileImage-Navbar {
+.profileSecondNavbar .profileImage-Navbar {
     width: 30px;
     border-radius: 50%;
 }
 
 @media (max-width: 600px) {
-    .navbar {
-        flex-direction: column; 
+    .SecondNavbar {
+        flex-direction: column;
     }
 
-    .links {
-        margin-top: 0; 
+    .LinksRouter {
+        margin-top: 0;
     }
 
-    .links .Navbar-link {
-        padding: 8px 10px; 
-        font-size: 14px; 
+    .LinksRouter .SecondNavbar-link {
+        padding: 8px 10px;
+        font-size: 14px;
     }
 
-    .profile .profileImage-Navbar{
+    .profileSecondNavbar .profileImage-Navbar {
         width: 25px;
     }
+}
+
+.profileSecondNavbar {
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 190px;
+}
+
+.IconProfileSecondNavbar {
+    background: none;
+    border: none;
+    cursor: pointer;
 }

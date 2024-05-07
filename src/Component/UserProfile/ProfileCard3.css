@@ -1,4 +1,4 @@
-.l-card {
+.l-cardAccount3 {
     width: 90%; 
     max-width: 480px; 
     height: auto;
@@ -9,7 +9,7 @@
     margin: 40px auto; 
 }
 
-.l-cardtext {
+.l-cardtextAmeer {
     font-size: 2rem; 
     font-family: "Vollkorn", serif;
     font-weight: 400;
@@ -17,8 +17,8 @@
     text-align: center; 
 }
 
-.write,
-.camera-section {
+.writeAmeer,
+.cameraAmeer {
     margin-top: 2rem; 
     margin-right: 100px;
     display: flex;
@@ -26,6 +26,6 @@
     align-items: center;
 }
 
-.pp {
+.subAmeer {
     margin-left: 0.5rem; 
 }

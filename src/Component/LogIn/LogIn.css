@@ -10,7 +10,7 @@
     text-align: center;
 }
 
-.HeaderLogIn {
+.LogInHeaderOne {
     font-size: 30px;
     margin-bottom: 15px;
     font-family: 'Times New Roman', Times, serif;
@@ -57,11 +57,11 @@
     background-color: #965300;
 }
 
-.password-container {
+.passwordContainerLogIn {
     position: relative;
 }
 
-.password-icon {
+.passwordIconLogIn {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -73,23 +73,23 @@
     padding-right: 30px;
 }
 
-.password-icon.visible path {
+.passwordIconLogIn.visible path {
     fill: none;
     stroke: #ff8400;
     stroke-width: 2px;
 }
 
-.links {
+.LogInLinks {
     text-align: center;
     margin-top: 15px;
 }
 
-.links a {
+.LogInLinks a {
     color: #000000;
     text-decoration: none;
 }
 
-.links a:hover {
+.LogInLinks a:hover {
     text-decoration: underline;
     color: #ffffff;
 }

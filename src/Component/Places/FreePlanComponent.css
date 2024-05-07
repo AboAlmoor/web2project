@@ -1,89 +1,92 @@
-#onefree {
-    background-color: rgb(253, 197, 157);
-    margin: 0;
-    padding: 110px;
-    width: 100%;
+#onefree_places {
+  background-color: rgb(253, 197, 157);
+  margin: 0;
+  padding: 50px;
+  width: 100%;
+  min-width: 380px ;
 }
 
-.freeplan-container {
-    margin-right: 0;
-    margin-left: 0;
-    max-width: 100%;
-}
-.freeplan-title {
-    color: #333;
-    font-size: 2rem;
-  }
-  
-  .freeplan-description {
-    color: #666;
-    margin-bottom: 2rem;
-  }
-  
-.freeplan-card {
-  background-color: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  position: relative;
-  padding-top: 50px;
-  max-width: 550px;
-  min-width : 300px
+.freeplan-container_places {
+  margin-right: 0;
+  margin-left: 0;
+  max-width: 100%;
   
 }
 
-.freeplan-card::before {
-  content: "FREE";
-  position: absolute;
-  top: 0px;
-  right: -20px;
-  background-color: #f06;
-  color: #fff;
-  padding: 10px 20px;
-  transform: rotate(45deg);
-  font-size: 1em;
-  border-radius: 0.25rem;
+.freeplan-title_places {
+color: #333;
+font-size: 2rem;
 }
 
-.freeplan-card h4 {
-  margin-bottom: 20px;
+.freeplan-description_places {
+color: #666;
+  
 }
 
-.freeplan-list {
-  text-align: left;
-  padding-left: 0;
-  list-style: none;
+.freeplan-card_places {
+background-color: #fff;
+border-radius: 0.5rem;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+position: relative;
+max-width: 550px;
+min-width : 300px;
+padding-top: 50px; 
+
 }
 
-.freeplan-list li {
-  margin-bottom: 10px;
+.freeplan-card_places::before {
+content: "FREE";
+position: absolute;
+top: 0px;
+right: -20px;
+background-color: #f06;
+color: #fff;
+padding: 10px 20px;
+transform: rotate(45deg);
+font-size: 1em;
+border-radius: 0.25rem;
 }
 
-.bi-check-circle-fill {
-  margin-right: 0.5rem;
-  color: #28a745;
+.freeplan-card_places h4 {
+margin-bottom: 20px;
 }
 
-.btn-primary {
-  background-color: #ff4b4b; 
-  border: none;
+.freeplan-list_places {
+text-align: left;
+padding-left: 0;
+list-style: none;
 }
 
-.btn-primary:hover {
-  background-color: #e04343; 
+.freeplan-list_places li {
+margin-bottom: 10px;
+}
+
+.bi-check-circle-fill_places {
+margin-right: 0.5rem;
+color: #28a745;
+}
+
+.btn-primary_places {
+background-color: #ff4b4b; 
+border: none;
+}
+
+.btn-primary_places:hover {
+background-color: #e04343; 
 }
 
 .text-secondary {
-  color: #6c757d; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+color: #6c757d; 
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 @media (max-width: 768px) {
-    .freeplan-card::before {
-      font-size: 0.7em; 
-      padding: 8px 16px; 
-      top: -15px; 
-      right: -15px;
-    }
+  .freeplan-card_places::before {
+    font-size: 0.7em; 
+    padding: 8px 16px; 
+    top: -15px; 
+    right: -15px;
   }
+}

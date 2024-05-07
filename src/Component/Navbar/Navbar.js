@@ -12,19 +12,19 @@ function Navbar() {
     };
 
     return (
-        <nav className="navbar">
-            <div className="logo">
-                <img className="logoImage-Navbar" src={image_logo} alt="" />
+        <nav className="SecondNavbar">
+            <div className="LogoSecondNavbar">
+                <img className="logoImage-Navbar" src={image_logo} alt=" " />
             </div>
-            <div className="links">
-                <Link className='Navbar-link' to='/'>HomePage</Link>
-                <Link className='Navbar-link' to='/places'>places</Link>
-                <Link className='Navbar-link' to='/Guidesearch'>Guide</Link>
-                <Link className='Navbar-link' to='/KnowTheUnknown'>KnowTheUnknown</Link>
+            <div className="LinksRouter">
+                <Link className='SecondNavbar-link' to='/'>Home Page</Link>
+                <Link className='SecondNavbar-link' to='/places'>Places</Link>
+                <Link className='SecondNavbar-link' to='/Guidesearch'>Guide</Link>
+                <Link className='SecondNavbar-link' to='/KnowTheUnknown'>Know The Unknown</Link>
             </div>
             <div >
-                <button className="profile" onClick={handleshowprofile}>
-                    <img className="profileImage-Navbar" src={image_profile} onClick={handleshowprofile} />
+                <button className="profileSecondNavbar" onClick={handleshowprofile}>
+                    <img className="profileImage-Navbar" src={image_profile} alt=" " onClick={handleshowprofile} />
                 </button>
             </div>
 

@@ -149,7 +149,7 @@ const FooterPlaces = () => {
                     <div className="footer_bg_two" />
                 </div>
             </div>
-            <div className="footer_bottom">
+            <div className="footer_bottom_places">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6 col-sm-7">

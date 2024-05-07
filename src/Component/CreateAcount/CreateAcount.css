@@ -10,26 +10,26 @@
     text-align: center;
 }
 
-.CreateAcount {
+.CreateAcountHeader1 {
     font-size: 30px;
     margin-bottom: 10px;
     font-family: 'Times New Roman', Times, serif;
 }
 
-.WebsiteName {
+.WebsiteNameCreateAcount {
     font-size: 17px;
     margin-bottom: 20px;
     font-family: 'Times New Roman', Times, serif;
 }
 
-.Username_Email_Password_ConfirmPassword {
+.Username_Email_Password_ConfirmPassword_Country {
     display: flex;
     flex-direction: column;
     width: 100%;
     font-family: 'Times New Roman', Times, serif;
 }
 
-.labelInput {
+.labelInputCreateAcount {
     margin-bottom: 5px;
     font-weight: bold;
     font-size: 18px;
@@ -39,7 +39,7 @@
 .CreateAcountEmail,
 .CreateAcountPassword,
 .ConfirmPasswordCreateAcount,
-.allCountry {
+.allCountryCreateAcount {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -49,7 +49,7 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
-.buttonSignUp {
+.buttonSignUpCreateAccount {
     background-color: #a45a00;
     width: 60%;
     align-self: center;
@@ -62,15 +62,15 @@
     cursor: pointer;
 }
 
-.buttonSignUp:hover {
+.buttonSignUpCreateAccount:hover {
     background-color: #ff8400;
 }
 
-.password-container {
+.passwordContainerCreateAcount {
     position: relative;
 }
 
-.password-icon {
+.passwordIconCreateAcount {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -79,10 +79,10 @@
 }
 
 #password {
-    padding-right: 30px;
+    padding-right: 10px;
 }
 
-.password-icon.visible path {
+.passwordIconCreateAcount.visible path {
     fill: none;
     stroke: #ff8400;
     stroke-width: 2px;

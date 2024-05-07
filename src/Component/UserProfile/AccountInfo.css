@@ -1,6 +1,6 @@
-.row {
+.rowAccount {
     display: flex;
-    justify-content: space-around;
+    margin-top: -5px;
 }
 
 .form-group {
@@ -9,13 +9,14 @@
     margin: 10px;
 }
 
-.tit {
+.titAccount {
     margin-left: 10px;
     margin-top: 20px;
     margin-bottom: -20px;
+    text-align: start;
 }
 
-.line {
+.lineAccount {
     margin-bottom: 20px;
     color: #3605fb;
     
@@ -29,9 +30,10 @@
     margin-bottom: 10px;
 }
 
-.form-label-2 {
+.test2Account {
     font-size: 14px;
     margin-bottom: 5px;
+    text-align: start;
 }
 
 .form-field-3 {
@@ -42,9 +44,9 @@
     margin-bottom: 10px;
 }
 
-.form-label-3 {
+.test3Account {
     font-size: 14px;
-    align-items: flex-start;
+    text-align: start;
     margin-bottom: 5px;
 }
 
@@ -56,9 +58,9 @@
     margin-bottom: 10px;
 }
 
-.form-label-4 {
+.test4Account {
     font-size: 14px;
-    align-items: flex-start;
+    text-align: start;
     margin-bottom: 5px;
 }
 
@@ -70,9 +72,9 @@
     margin-bottom: 10px;
 }
 
-.form-label-5 {
+.test5Account {
     font-size: 14px;
-    align-items: flex-start;
+    text-align: start;
     margin-bottom: 5px;
 }
 
@@ -82,9 +84,9 @@
     margin-bottom: 10px;
 }
 
-.form-label-6 {
+.test6Account {
     font-size: 14px;
-    align-items: flex-start;
+    text-align: start;
     margin-bottom: 5px;
 }
 
@@ -96,15 +98,15 @@
     margin-bottom: 10px;
 }
 
-.form-label-7 {
+.test7Account {
     font-size: 14px;
-    align-items: flex-start;
+    text-align: start;
     margin-bottom: 5px;
 }
 
-.form-label-8 {
+.test8Account {
     font-size: 14px;
-    align-items: flex-start;
+    text-align: start;
     margin-bottom: 5px;
 }
 
@@ -147,7 +149,6 @@
         outline: none;
         background: none;
         border: none;
-        margin: 0;
     }
 
     .AccountInput {
@@ -266,7 +267,7 @@
     margin-bottom: 10px;
 }
 
-.But {
+.butAccount {
     margin-top: 20px;
     margin-left: 500px;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './AccountInfo.js';
+import '../UserProfile/AccountInfo.css'
 
 function AccountInfo() {
     const [password, setPassword] = useState('');
@@ -228,63 +228,60 @@ function AccountInfo() {
 
     return (
         <div>
-            <div className="tit">
+            <div className="titAccount">
                 <h2>Account Info</h2>
             </div>
 
-            <div className="line">
+            <div className="lineAccount">
                 <h2>_________________________________________________________________________________________________________________________</h2>
             </div>
 
-            <div className="row">
-                <div className="col">
+            <div className=" rowAccount">
+                <div>
                     <div className="form-group field">
-                        <label htmlFor="name" className="form-label-2">First Name</label>
+                        <label htmlFor="name" className="form-label-2 test2Account">First Name</label>
                         <input type="text" className="form-field-2 AccountInput" placeholder="first name..." name="name" id="name" required />
                     </div>
                 </div>
-                <div className="col">
+                <div>
                     <div className="form-group field">
-                        <label htmlFor="name" className="form-label-2">Last Name</label>
+                        <label htmlFor="name" className="form-label-2 test2Account">Last Name</label>
                         <input type="text" className="form-field-2 AccountInput" placeholder="last name..." name="name" id="name" required />
                     </div>
                 </div>
-                <div className="col">
-
-                </div>
             </div>
 
-            <div className="row">
-                <div className="col">
+            <div className=" rowAccount">
+                <div>
                     <div className="form-group field">
-                        <label htmlFor="email" className="form-label-3">Email</label>
+                        <label htmlFor="email" className="form-label-3 test3Account" >Email</label>
                         <input type="text" className="form-field-3 AccountInput" placeholder="email... " name="email" id="email" required />
                     </div>
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col">
+            <div className=" rowAccount">
+                <div>
                     <div className="form-group field">
-                        <label htmlFor="name" className="form-label-4">Address</label>
+                        <label htmlFor="name" className="form-label-4 test4Account">Address</label>
                         <input type="text" className="form-field-4 AccountInput" placeholder="street address..." name="name" id="name" required />
                     </div>
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col">
+            <div className=" rowAccount">
+                <div>
                     <div className="form-group field">
-                        <label htmlFor="name" className="form-label-5">City</label>
+                        <label htmlFor="name" className="form-label-5 test5Account">City</label>
                         <input type="text" className="form-field-5 AccountInput" placeholder="city..." name="name" id="name" required />
                     </div>
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col">
+            <div className=" rowAccount">
+                <div>
                     <div className="form-group field">
-                        <label htmlFor="name" className="form-label-6">County</label>
+                        <label htmlFor="name" className="form-label-6 test6Account">County</label>
                         <div className="form-field-6" >
                             <div>
                                 <select onChange={handleCountryChange}>
@@ -301,19 +298,19 @@ function AccountInfo() {
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col">
+            <div className=" rowAccount">
+                <div>
                     <div className="form-group field">
-                        <label htmlFor="name" className="form-label-7">Phone Number</label>
+                        <label htmlFor="name" className="test7Account">Phone Number</label>
                         <input type="phonenumber" className="form-field-7 AccountInput" placeholder="phone number..." name="name" id="name" required />
                     </div>
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col">
+            <div className=" rowAccount">
+                <div >
                     <div className="form-group field">
-                        <label htmlFor="name" className="form-label-8">Password</label>
+                        <label htmlFor="name" className="test8Account">Password</label>
                         <div>
                             <div className="password-field">
                                 <input
@@ -344,20 +341,16 @@ function AccountInfo() {
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col">
-                    <div className="line">
-                        <h2>_________________________________________________________________________________________________________________________</h2>
-                    </div>
-                </div>
+            <div className="lineAccount">
+                <h2>_________________________________________________________________________________________________________________________</h2>
             </div>
 
-            <div className="row">
-                <div className="col">
-                    <div className="But">
-                        <div class="flex-grid-center" style={{marginRight:"600px"}}>
-                            <button  classname="pure-button fuller-button blue AccountButton">save</button>
-                            <button classname="pure-button fuller-button red AccountButton">cancel</button>
+            <div className=" rowAccount">
+                <div>
+                    <div className="butAccount">
+                        <div className="flex-grid-center" style={{marginRight:"600px"}}>
+                            <button  className="pure-button fuller-button blue AccountButton">save</button>
+                            <button className="pure-button fuller-button red AccountButton">cancel</button>
                         </div>
                     </div>
                 </div>

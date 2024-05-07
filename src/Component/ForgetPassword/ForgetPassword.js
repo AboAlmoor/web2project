@@ -13,18 +13,18 @@ const FindAccount = () => {
     };
 
     const handleCancel = () => {
-        navigate('/'); // Navigate to the login page
+        navigate('/');
         console.log('Cancel button clicked');
     };
 
     return (
         <div className='CenteredContainer'>
             <div className="ContainerForgetPassword">
-                <h1 className='HeaderFindAacount'>Find your account</h1>
+                <h1 className='FindAacountHeader1'>Find your account</h1>
                 <hr />
                 <p className='ParagraphForgetPassword'>Please enter your email address to search for your account.</p>
                 <form onSubmit={handleSubmit}>
-                    <label className='LabelForgetPassword' htmlFor="email" ></label>
+                    <label className='ForgetPasswordLabel' htmlFor="email" ></label>
                     <input
                         type="email"
                         className="InputEmailForgetPassword"
@@ -34,13 +34,12 @@ const FindAccount = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <button className='SearchForgetPassword' type="submit">Search</button>
-                    <button className='CancelForgetPassword' type="button" onClick={handleCancel}>Cancel</button>
+                    <button className='ButtonSearchForgetPassword' type="submit">Search</button>
+                    <button className='ButtonCancelForgetPassword' type="button" onClick={handleCancel}>Cancel</button>
                 </form>
                 <Link to='/ForgetPassword' />
             </div>
         </div>
     );
 };
-
 export default FindAccount;

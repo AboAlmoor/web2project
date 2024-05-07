@@ -11,7 +11,7 @@
     margin-bottom: 40px;
   
 }
-#header_places .overlay{
+#header_places .overlay_places{
 	width: 100%;	
 	height: 100%;
 	padding: 55px;
@@ -21,20 +21,20 @@
 	padding-bottom: 155px ;
 }
 
-.titel_h1 {
+.titel_h1_places {
     margin-top: 40px;
     font-family: 'Dancing Script', cursive;
     font-size: 80px;
     margin-bottom: 30px;
 }
 
-.titel_h3,
-.parg {
+.titel_h3_places,
+.parg_places {
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 30px;
 }
 
-.Bt_2 {
+.Bt_2_places {
     border: none;
     outline: none;
     padding: 10px 20px;
@@ -45,9 +45,8 @@
     box-shadow: 0 3px 20px 0 #0000003b;
 }
 
-.Bt_2:hover {
+.Bt_2_places:hover {
     cursor: pointer;
     background-color: #0101ff;
     color: #ffffff;
   }
-  

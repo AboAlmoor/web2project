@@ -1,5 +1,4 @@
 
-import './App.css';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -23,7 +22,7 @@ import FreePlanComponent from './Component/Places/FreePlanComponent';
 import FooterPlaces from './Component/Places/Footer';
 import MainPage from './Component/Places/Card';
 import Header from './Component/Places//Header';
-import Navbar from './Component/Places/Navbar';
+import Navbar from './Component/Places/P_Button_places';
 // saleh
 import MainNavbar1 from './Component/MainPage/MainNavbar1';
 import MainIcons from './Component/MainPage/MainIcons';
@@ -92,10 +91,9 @@ function App() {
           <Route path="/" element={<HomePageRoute />} />
 
           {/* ameer */}
-          <Route>
-            <Route path="/ProfileComponents" element={<ProfileCover />} />
+          <Route path="/ProfileComponents" element={<ProfileCover />} />
             <Route path="/editProfile" element={<ProfileEdit />} />
-          </Route>
+            <Route path="/Login" element={<LogIn />} />
         </Routes>
       </Router>
     </div>

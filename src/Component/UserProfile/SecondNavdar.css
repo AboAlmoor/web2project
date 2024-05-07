@@ -1,8 +1,4 @@
-:root {
-    --menu-width: 100%; 
-    --items: 4;
-    --item-width: calc(100% / var(--items));
-}
+
 
 #menu {
     display: flex;
@@ -62,7 +58,4 @@
         flex-basis: var(--item-width); 
     }
 
-    :root {
-        --items: 2;
-    }
 }

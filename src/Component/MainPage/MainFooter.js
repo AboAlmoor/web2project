@@ -30,16 +30,16 @@ function MainFooter() {
               <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Useful Links</span>
               <ul className="list-unstyled">
                 <li>
-                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.creative-tim.com/presentation?ref=njs-profile">About Us</a>
+                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="#About Us" alt = " ">About Us</a>
                 </li>
                 <li>
-                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://blog.creative-tim.com?ref=njs-profile">Blog</a>
+                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="#Blog" alt = " ">Blog</a>
                 </li>
                 <li>
-                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.github.com/creativetimofficial?ref=njs-profile">Github</a>
+                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="#Github" alt = " ">Github</a>
                 </li>
                 <li>
-                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.creative-tim.com/bootstrap-themes/free?ref=njs-profile">Free Products</a>
+                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="#Free Content" alt = " ">Free Content</a>
                 </li>
               </ul>
             </div>
@@ -47,16 +47,16 @@ function MainFooter() {
               <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Other Resources</span>
               <ul className="list-unstyled">
                 <li>
-                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-profile">MIT License</a>
+                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="#MLT license" alt = " ">MIT License</a>
                 </li>
                 <li>
-                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://creative-tim.com/terms?ref=njs-profile">Terms &amp; Conditions</a>
+                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="#Conditions" alt = " ">Terms &amp; Conditions</a>
                 </li>
                 <li>
-                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://creative-tim.com/privacy?ref=njs-profile">Privacy Policy</a>
+                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="#Privacy Policy" alt = " ">Privacy Policy</a>
                 </li>
                 <li>
-                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://creative-tim.com/contact-us?ref=njs-profile">Contact Us</a>
+                  <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="#Contact Us" alt = " ">Contact Us</a>
                 </li>
               </ul>
             </div>
@@ -67,8 +67,8 @@ function MainFooter() {
       <div className="flex flex-wrap items-center md:justify-between justify-center">
         <div className="w-full md:w-4/12 px-4 mx-auto text-center">
           <div className="text-sm text-blueGray-500 font-semibold py-1">
-            Copyright © <span id="get-current-year">2021</span><a href="https://www.creative-tim.com/product/notus-js" className="text-blueGray-500 hover:text-gray-800" target="_blank" rel="noopener noreferrer"> Notus JS by
-            </a><a href="https://www.creative-tim.com?ref=njs-profile" className="text-blueGray-500 hover:text-blueGray-800" rel="noopener noreferrer">Creative Tim</a>.
+           <div className="text-blueGray-500 hover:text-gray-800" target="_blank" rel="noopener noreferrer"> Copyright © 2024 all rights reserved
+            </div>
           </div>
         </div>
       </div>
