@@ -1,22 +1,34 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-require("dotenv").config();
+
+require('dotenv').config(); 
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const UnknownModel = require('./models/Secret')
 const Guide = require("./models/Guide");
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(cors())
+app.use(express.json())
 
-app.use(express.json());
-app.use(cors());
-
-
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Error connecting to MongoDB:", err));
-
+mongoose.connect(process.env.MONGODB_URL)
+.then(() => {
+    console.log("Connected Succesfully DB ")
+}).catch((error) => {
+    console.log("error with connecting to DB ", error)
+})
+//mohamad & yazan 
+app.get('/getUnknown', async (req, res) => {
+    try {
+        const unknown = await UnknownModel.find()
+        res.send(unknown)
+    }
+    catch (error) {
+        res.json(error)
+    }
+})
 
 app.get("/api/guides", async (req, res) => {
   try {
@@ -28,7 +40,7 @@ app.get("/api/guides", async (req, res) => {
   }
 });
 
-
+// mohamad amad
 app.get("/api/guides/:id", async (req, res) => {
   try {
     const guide = await Guide.findById(req.params.id);
@@ -41,9 +53,6 @@ app.get("/api/guides/:id", async (req, res) => {
     res.json({ message: "Internal Server Error" });
   }
 });
-
-
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
