@@ -3,7 +3,8 @@ import './Cardfood.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function CardHover() {
+function CardHover({Restaurant}) {
+
   return (
     <div className="card-hover">
         <div className="card-hover__content">
@@ -12,9 +13,8 @@ function CardHover() {
                 Make your <span>choice</span> right now!
             </h3>
 
-            <p className="card-hover__text">Lorem ipsum, 
-            dolor sit amet consectetur adipisicing elit. Officia quisquam doloremque nostrum laboriosam,
-            blanditiis libero        corporis nulla a aut?
+            <p className="card-hover__text">{Restaurant.title} , 
+            {Restaurant.subtitle}
             </p>
 
             <a href="#/" className="card-hover__link" alt=" ">
@@ -31,7 +31,7 @@ function CardHover() {
             <h4>Learn <span>now</span> and get <span>40%</span> discount!</h4>
         </div>
 
-        <img id='img_cardfood' src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60" alt=" "  />
+        <img id='img_cardfood' src={Restaurant.imageUrl} alt=" /"  />
     </div>
 
   );
