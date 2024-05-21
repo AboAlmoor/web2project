@@ -18,7 +18,9 @@ const UnknownModel = require('./models/Secret')
 const Guide = require("./models/Guide");
 const RestaurantModel =require('./models/Restaurant')
 const PlacesModel = require("./models/Places");
-const SignupModel = require('./models/Signup')
+const SignupModel = require('./models/Signup');
+const places = require('./models/Places.js');
+const connectDB = require('./db/connection.js');
 
 
 const app = express();
@@ -26,6 +28,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors())
 app.use(express.json())
+connectDB();
 
 mongoose.connect(process.env.MONGODB_URL)
 .then(() => {
@@ -136,9 +139,19 @@ app.get('/getPlaces',  async (req, res) => {
     }
 });
 
+// saleh 
+app.get('/search/:key', async (req, res) => {
+  
+ 
+    let data = await places.find({
+       abbreviation : req.params.key
+    });
+
+    return res.json(data);
+
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
 

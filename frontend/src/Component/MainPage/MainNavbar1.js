@@ -1,20 +1,57 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './MainNavbar.css';
-import Alaqsa from './Alaqsa.png'
-import logo from './logo.png'
+import Alaqsa from './Alaqsa.png';
+import logo from './logo.png';
 import { BsPersonCircle } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
-
-
+import axios from 'axios';
+import { SearchContext } from './SearchContext';
 
 function MainNavbar1() {
-
     const navigate = useNavigate();
     const handleshowprofile = () => {
         navigate("/ProfileComponents");
     };
+
+    const [abbName, setabbName] = useState('');
+    const { setSearchResults } = useContext(SearchContext);
+    const [errorMessage, setErrorMessage] = useState('');
+
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            findAbb();
+        }
+    };
+    
+
+    async function findAbb() {
+        
+        if (!abbName.trim()) {
+
+            setSearchResults([]); 
+            setErrorMessage('Please enter a name of a city');
+            return;
+
+        }
+       
+
+        try {
+            const response = await axios.get(`http://localhost:5000/search/${abbName}`);
+            if (response.data.length === 0) {
+                setErrorMessage('City not found');
+                setSearchResults([]);
+            } else {
+                setErrorMessage('');
+                setSearchResults(response.data);
+            }
+        } catch (error) {
+            setErrorMessage('An error occurred while searching');
+        }
+    }
+
     return (
         <div className=''
             style={{
@@ -24,31 +61,24 @@ function MainNavbar1() {
                 backgroundPosition: "top center",
                 height: "500px",
             }}>
-
-
-
             <div className=''>
                 <div className='navbar'>
                     <Navbar bg="light" expand="lg" className="shadow" >
                         <Container>
                             <Navbar.Brand href="#home" >
-
-                                <div className="main_logo">
-
+                                <div className="logo">
                                     <Navbar.Brand href="#home">
                                         <img src={logo} alt="Logo" className='rounded-circle' />
                                     </Navbar.Brand>
-
                                 </div>
-
                             </Navbar.Brand>
                             <div className='HP-navbar'>
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav>
-                                        <Link to="/LogIn"> <div className='sign-in'>Sign in</div></Link>
+                                        <Link to="/LogIn"><div className='sign-in'>Sign in</div></Link>
                                         <Link to="/CreateAcount">
-                                            <Button className="sign_up" variant="outline-primary" >Sign up</Button>
+                                            <Button className="sign_up" variant="outline-primary">Sign up</Button>
                                         </Link>
                                         <Nav.Item className="ml-auto profile-nav-item">
                                             <button className="profile-button" onClick={handleshowprofile}>
@@ -57,34 +87,37 @@ function MainNavbar1() {
                                         </Nav.Item>
                                     </Nav>
                                 </Navbar.Collapse>
-
                             </div>
-
                         </Container>
                     </Navbar>
                 </div>
             </div>
 
-
-
             <div className='mainpage-header1'>
                 <h2>Secrets of Cities-Palestine</h2>
             </div>
 
-
-
             <div className='main-page-search mt-20'>
-
                 <div className="search-container">
-                    <input type="text" name="search" placeholder="Search for name of a city..." className="search-input" />
-                    <a href="#/" alt=" " className="search-btn">
+                    <input 
+                       onChange={(e) => { 
+                        setabbName(e.target.value);
+                        if (errorMessage) {
+                            setErrorMessage('');
+                            }
+                         }} 
+                        onKeyPress={handleKeyPress} 
+                        type="text" 
+                        name="search" 
+                        placeholder="Search for name of a city..." 
+                        className="search-input" 
+                    />
+                    <button onClick={findAbb} className="search-btn">
                         <i className="fas fa-search" />
-                    </a>
+                    </button>
                 </div>
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
             </div>
-
-
-
         </div>
     );
 }

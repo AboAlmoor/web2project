@@ -1,4 +1,3 @@
-
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -16,19 +15,20 @@ import DataCard from './Component/Restaurant/card_all_restaurants/Card_group';
 import MultipleCards from './Component/Restaurant/card_supporter/MultipleCards';
 import HeaderRes from './Component/Restaurant/Header_res/Header_res';
 
-
 // ahmad 
 import FreePlanComponent from './Component/Places/FreePlanComponent';
 import FooterPlaces from './Component/Places/Footer';
 import MainPage from './Component/Places/Card';
-import Header from './Component/Places//Header';
+import Header from './Component/Places/Header';
 import Navbar from './Component/Places/P_Button_places';
+
 // saleh
 import MainNavbar1 from './Component/MainPage/MainNavbar1';
 import MainIcons from './Component/MainPage/MainIcons';
 import MainCards from './Component/MainPage/MainCards';
 import MainFeatures1 from './Component/MainPage/MainFeatures1';
 import MainFooter from './Component/MainPage/MainFooter';
+
 // ameer
 import ProfileCover from "./Component/UserProfile/ProfileCover"; 
 import ProfileEdit from "./Component/EditProfile/ProfileEdit";
@@ -44,6 +44,7 @@ function RestaurantRoute(){
     </>
   );
 }
+
 function HomePageRoute() {
   return (
     <>
@@ -55,6 +56,7 @@ function HomePageRoute() {
     </>
   );
 }
+
 function PlacesRoute() {
   return (
     <>
@@ -69,7 +71,6 @@ function PlacesRoute() {
 
 function App() {
   return (
-
     <div className="App">
       <Router>
         <Routes>
@@ -79,24 +80,16 @@ function App() {
           <Route path="/guidesearch" element={<Guidesearch />} />
           <Route path="/guideprofile/:guideId" element={<GuideProfile />} />
           <Route path="/KnowTheUnknown" element={<ImageCarousel />} />
-          {/* -------------------------------------------------------------------------- */}
-
           <Route path="/Restaurant" element={<RestaurantRoute/>} />
-          
-
-          {/* ahmad */}
           <Route path="/Places" element={<PlacesRoute />} />
-
-          {/* saleh */}
           <Route path="/" element={<HomePageRoute />} />
-
-          {/* ameer */}
           <Route path="/ProfileComponents" element={<ProfileCover />} />
-            <Route path="/editProfile" element={<ProfileEdit />} />
-            <Route path="/Login" element={<LogIn />} />
+          <Route path="/editProfile" element={<ProfileEdit />} />
+          <Route path="/Login" element={<LogIn />} />
         </Routes>
       </Router>
     </div>
   );
 }
+
 export default App;
