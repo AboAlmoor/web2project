@@ -21,6 +21,8 @@ const PlacesModel = require("./models/Places");
 const SignupModel = require('./models/Signup');
 const places = require('./models/Places.js');
 const connectDB = require('./db/connection.js');
+const logIn = require('./models/logIn');
+const connectDB = require('./connection/connect');
 
 
 const app = express();
@@ -149,6 +151,30 @@ app.get('/search/:key', async (req, res) => {
 
     return res.json(data);
 
+});
+
+app.post('/login', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const user = await logIn.findOne({ username });
+
+        if (!user) {
+            return res.status(400).send("Invalid username or password");
+        }
+
+        const match = await bcrypt.compare(password, user.password);
+
+        if (match) {
+            res.send("Password match");
+            console.log('Password match');
+        } else {
+            res.status(401).send("The password is incorrect");
+            console.log('The password is incorrect');
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
 app.listen(PORT, () => {
