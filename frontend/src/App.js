@@ -77,7 +77,7 @@ function App() {
           <Route index path="/CreateAcount" element={<CreateAcount />} />
           <Route index path="/ForgetPassword" element={<FindAccount />} />
           <Route path="/guidesearch" element={<Guidesearch />} />
-          <Route path="/guideprofile" element={<GuideProfile />} />
+          <Route path="/guideprofile/:guideId" element={<GuideProfile />} />
           <Route path="/KnowTheUnknown" element={<ImageCarousel />} />
           {/* -------------------------------------------------------------------------- */}
 
