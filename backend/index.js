@@ -13,6 +13,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
+const path = require('path');
+const bodyParser = require('body-parser');
 
 const UnknownModel = require('./models/Secret')
 const Guide = require("./models/Guide");
@@ -23,6 +25,7 @@ const places = require('./models/Places.js');
 const connectDB = require('./db/connection.js');
 const logIn = require('./models/logIn');
 const connectDB = require('./connection/connect');
+const ProfilesModel = require('./models/Profiles')
 
 
 const app = express();
@@ -30,6 +33,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors())
 app.use(express.json())
+app.use(bodyParser.json());
 connectDB();
 
 mongoose.connect(process.env.MONGODB_URL)
@@ -177,7 +181,43 @@ app.post('/login', async (req, res) => {
     }
 });
 
+//ameer 
+app.get('/getUsers', async (req, res) => {
+    try {
+        const ameer = await ProfilesModel.find();
+        res.send(ameer);
+
+    } catch (err) {
+        res.json({ message: "database error" }, err)
+    }
+})
+
+app.get('/checkPhoneNumber', async (req, res) => {
+    const { phoneNumber } = req.body;
+    try {
+        const [user] = await db.query('SELECT * FROM users WHERE phoneNumber = ?', [phoneNumber]);
+        if (user.length > 0) {
+            res.json({ exists: true });
+        } 
+        else {
+            res.json({ exists: false });
+        }
+
+    } catch (error) {
+        res.json({ error: 'Database error' });
+    }
+});
+
+app.post("/createUser", async (req, res) => {
+    const user = req.body;
+    const newUser = new ProfilesModel(user);
+    await newUser.save();
+    return res.json(user);
+})
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
