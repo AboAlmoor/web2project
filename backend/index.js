@@ -25,12 +25,15 @@ const places = require('./models/Places.js');
 const connectDB = require('./db/connection.js');
 const logIn = require('./models/logIn');
 const connectDB = require('./connection/connect');
-const ProfilesModel = require('./models/Profiles')
-
+const ProfilesModel = require('./models/Profiles');
+import usersModel from './models/user.js';
+import { sendEmail } from './sendEmail.js';
+import { customAlphabet } from 'nanoid';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+dotenv.config();
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json());
@@ -215,9 +218,78 @@ app.post("/createUser", async (req, res) => {
     return res.json(user);
 })
 
+//ahmad & abood 
+app.get('/getUsers1',  async (req, res) => {
+    try {
+        const allusers = await usersModel.find();
+        console.log(allusers);
+        res.json(allusers);
+    } catch (err) {
+        console.error('Error fetching Users info:', err);
+        res.status(500).json({ message: 'Internal Server Error' });
+    } 
+});
+
+
+export const ForgotPassword = async (req, res) => {
+    const { email } = req.body;
+    console.log('Received email:', email); 
+
+    try {
+        const RandomCode = customAlphabet('1234567890', 6);
+        const codeToSend = RandomCode();
+        console.log('Generated code:', codeToSend);
+
+        const user = await usersModel.findOneAndUpdate(
+            { email },
+            { sendCode: codeToSend },
+            { new: true }
+        );
+
+        if (!user) {
+            console.error('User not found for email:', email); 
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        await sendEmail(email, 'Reset Password', `<h1>${codeToSend}</h1>`);
+        console.log('Email to : ', email); 
+        return res.status(200).json({ message: 'Success', codeToSend });
+    } catch (err) {
+        console.error('Error forgot password:', err); 
+        res.status(500)
+        .json({ 
+            message: 'Error' , err
+        });
+    }
+};
+
+app.post('/ForgotPassword', ForgotPassword); 
+
+app.post('/verifyCode', async (req, res) => {
+
+    const { codeInData } = req.body; 
+    try {
+        const user = await usersModel.findOne({ sendCode: codeInData });
+        if (!user) {
+            return res.status(400)
+            .json({ 
+                message: 'Invalid code' 
+            });
+        }
+        return res.status(200)
+        .json({
+            message: 'Code verified' 
+        });
+    } catch (err) {
+        console.error('Error', err);
+        res.status(500)
+        .json({ 
+            message: 'Error'
+        });
+    }
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-

@@ -33,6 +33,10 @@ import MainFooter from './Component/MainPage/MainFooter';
 import ProfileCover from "./Component/UserProfile/ProfileCover"; 
 import ProfileEdit from "./Component/EditProfile/ProfileEdit";
 
+
+import EmailVerification from './Component/EnterEmailVerification/EmailVerification';
+import ChangePassword from './Component/Changepss/ChangePassword';
+
 function RestaurantRoute(){
   return(
     <>
@@ -77,6 +81,9 @@ function App() {
           <Route index path="/LogIn" element={<LogIn />} />
           <Route index path="/CreateAcount" element={<CreateAcount />} />
           <Route index path="/ForgetPassword" element={<FindAccount />} />
+          <Route index path="/email-verification" element={<EmailVerification />} />
+          <Route index path="/changePassword" element={<ChangePassword />} />
+
           <Route path="/guidesearch" element={<Guidesearch />} />
           <Route path="/guideprofile/:guideId" element={<GuideProfile />} />
           <Route path="/KnowTheUnknown" element={<ImageCarousel />} />

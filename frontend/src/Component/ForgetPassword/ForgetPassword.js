@@ -6,11 +6,29 @@ const FindAccount = () => {
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Searching for account with email:', email);
+        try {
+            const find = await fetch('http://localhost:4000/ForgotPassword', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+            const result = await find.json({});
+
+            if (find.ok) {
+                navigate('/email-verification'); 
+            } else {
+                console.error('Error:', result.message);
+            }
+
+        } catch (error) {
+            console.error('Error', error);
+        }
     };
+
 
     const handleCancel = () => {
         navigate('/');
@@ -37,7 +55,7 @@ const FindAccount = () => {
                     <button className='ButtonSearchForgetPassword' type="submit">Search</button>
                     <button className='ButtonCancelForgetPassword' type="button" onClick={handleCancel}>Cancel</button>
                 </form>
-                <Link to='/ForgetPassword' />
+                <Link to='/ForgotPassword' />
             </div>
         </div>
     );
