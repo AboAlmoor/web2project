@@ -1,23 +1,74 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-require("dotenv").config();
-const Guide = require("./models/Guide");
-const SignupModel = require('./models/Signup')
+// const Guide = require("./models/Secret");
+// mongoose.connect(process.env.MONGODB_URI).then(() => 
+// {
+//     app.get("/api/guide", async (req, res) => 
+//     {
+//         const guide = await Guide.find();
+//         res.json(guide);
+//     });
+//     app.listen(PORT);
+
+require('dotenv').config(); 
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
+
+const UnknownModel = require('./models/Secret')
+const Guide = require("./models/Guide");
+const RestaurantModel =require('./models/Restaurant')
+const PlacesModel = require("./models/Places");
+const SignupModel = require('./models/Signup')
+
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(cors())
+app.use(express.json())
 
-app.use(express.json());
-app.use(cors());
+mongoose.connect(process.env.MONGODB_URL)
+.then(() => {
+    console.log("Connected Succesfully DB ")
+}).catch((error) => {
+    console.log("error with connecting to DB ", error)
+})
 
+//mohamad & yazan 
+app.get('/getUnknown', async (req, res) => {
+    try {
+        const unknown = await UnknownModel.find()
+        res.send(unknown)
+    }
+    catch (error) {
+        res.json(error)
+    }
+})
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Error connecting to MongoDB:", err));
+//mhmad awawdy
+app.get("/api/guides", async (req, res) => {
+  try {
+    const guides = await Guide.find();
+    res.json(guides);
+  } catch (error) {
+    
+    res.json({ message: "Internal Server Error" });
+  }
+});
 
+// mohamad amad
+app.get("/api/guides/:id", async (req, res) => {
+  try {
+    const guide = await Guide.findById(req.params.id);
+    if (!guide) {
+      return res.json({ message: "Guide not found" });
+    }
+    res.json(guide);
+  } catch (error) {
+    console.error("Error fetching guide info:", error);
+    res.json({ message: "Internal Server Error" });
+  }
+});
 
   app.get("/api/guides", async (req, res) => {
     const searchTerm = req.query.searchTerm;
@@ -34,21 +85,7 @@ mongoose
       res.status(500).json({ message: "Internal Server Error" });
     }
   });
-  
 
-
-app.get("/api/guides/:id", async (req, res) => {
-  try {
-    const guide = await Guide.findById(req.params.id);
-    if (!guide) {
-      return res.json({ message: "Guide not found" });
-    }
-    res.json(guide);
-  } catch (error) {
-    console.error("Error fetching guide info:", error);
-    res.json({ message: "Internal Server Error" });
-  }
-});
 
 app.post('/Createacount', async (req, res) => {
   const { username, email, password, confirmPassword, country } = req.body;
@@ -78,6 +115,30 @@ app.post('/Createacount', async (req, res) => {
   }
 });
 
+// abood 
+app.get('/getRestaurant' , (req, res) => {
+  RestaurantModel.find()
+  .then(Restaurant => res.json(Restaurant))
+  .catch(err => res.json(err))
+
+})
+
+//ahmad 
+app.get('/getPlaces',  async (req, res) => {
+
+    try {
+        const allPlaces = await PlacesModel.find(); 
+        console.log(allPlaces);
+        res.json(allPlaces);
+    } catch (err) {
+        console.error('Error fetching places  info:', err);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
