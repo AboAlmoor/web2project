@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 const UnknownModel = require('./models/Secret')
 const Guide = require("./models/Guide");
 const RestaurantModel =require('./models/Restaurant')
+const PlacesModel = require("./models/Places");
 
 
 const app = express();
@@ -71,8 +72,20 @@ app.get('/getRestaurant' , (req, res) => {
   .catch(err => res.json(err))
 
 })
+//ahmad 
+app.get('/getPlaces',  async (req, res) => {
 
+    try {
+        const allPlaces = await PlacesModel.find(); 
+        console.log(allPlaces);
+        res.json(allPlaces);
+    } catch (err) {
+        console.error('Error fetching places  info:', err);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 

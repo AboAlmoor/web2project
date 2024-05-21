@@ -1,13 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from '../Navbar/Navbar';
 import './Header.css';
 
 const Header = () => {
     return (
         <>
             <div>
-                <Navbar />
                 <div className="header-container">
                     <header id="header_places">
                         <div className="overlay_places">
