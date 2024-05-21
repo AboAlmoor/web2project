@@ -2,16 +2,12 @@ import React from 'react';
 import './Header_res.css';
 import Navber from '../../Navbar/Navbar';
 
-function Header_res() {
+function Header_res({Restaurant}) {
   return (
     <>
       <header>
       <Navber/>
-        <div
-          id="carouselExampleCaptions"
-          className="carousel slide"
-          data-bs-ride="carousel"
-        >
+        <div id="carouselExampleCaptions" className="carousel slide"data-bs-ride="carousel">
           <div className="carousel-indicators">
             <button
               type="button"

@@ -1,14 +1,10 @@
-/* Mhmad Awawdy 
- The style was removed due to the task not being completed within the specified time
-Because the style was causing problems on other pages*/
-
-/* .carousel-item {
-    height: 65vh;
-    min-height: 350px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  } */
-  
+.carousel-item {
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-bottom: 5px;
+} 
