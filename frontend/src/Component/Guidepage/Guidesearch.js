@@ -1,95 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Guidesearchbackground from "./touguide.png";
-
-
 import "./Guidesearch.css";
-import Navbar from '../Navbar/Navbar';
-
-const tourguidecardData = [
-  {
-    name: "ahmad",
-    role: "Tour Guide",
-    imageUrl:
-      "https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "mohammed",
-    role: "Tour Guide",
-    imageUrl:
-      "https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "ali",
-    role: "Tour Guide",
-    imageUrl:
-      "https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "rama",
-    role: "Tour Guide",
-    imageUrl:
-      "https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "alaa",
-    role: "Tour Guide",
-    imageUrl:
-      "https://images.unsplash.com/photo-1532123675048-773bd75df1b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "hoss",
-    role: "Trip Designer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1549417229-aa67d3263c09?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "farah",
-    role: "Tour Guide",
-    imageUrl:
-      "https://images.unsplash.com/photo-1548094878-84ced0f6896d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "farah",
-    role: "Tour Guide",
-    imageUrl:
-      "https://images.unsplash.com/photo-1548094878-84ced0f6896d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "farah",
-    role: "Tour Guide",
-    imageUrl:
-      "https://images.unsplash.com/photo-1548094878-84ced0f6896d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "farah",
-    role: "Tour Guide",
-    imageUrl:
-      "https://images.unsplash.com/photo-1548094878-84ced0f6896d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-];
 
 function Guidesearch() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
+  const [guideData, setGuideData] = useState([]);
 
-  const filteredCards = tourguidecardData.filter((card) =>
-    card.name.toLowerCase().includes(searchTerm.toLowerCase())
+  useEffect(() => {
+    async function fetchGuides() {
+      try {
+        const response = await axios.get("http://localhost:5000/api/guides");
+        
+        setGuideData(response.data);
+      } catch (error) {
+        console.error("Error fetching guides:", error);
+      }
+    }
+
+    fetchGuides();
+  }, []);
+
+  const filteredCards = guideData.filter((guide) =>
+    guide.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleshowprofile = () => {
-    navigate("/GuideProfile");
+  const handleshowprofile = (guideId) => {
+    navigate(`/GuideProfile/${guideId}`);
   };
 
   return (
     <div>
-      <Navbar/>
       <div className="Guidepagecontainer">
         <div className="guidesearch">
           <div className="img-fluid containerguideimg">
             <img src={Guidesearchbackground} alt="Background" />
           </div>
-
           <form
             className="tourguidesearchbar col-12"
             onSubmit={(e) => e.preventDefault()}
@@ -103,7 +51,7 @@ function Guidesearch() {
             />
             <button type="submit" className="tourguidesearchbutton">
               <svg
-              className="svg-Guide"
+                className="svg-Guide"
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
                 height="25"
@@ -113,29 +61,32 @@ function Guidesearch() {
               </svg>
             </button>
           </form>
-
-          <div className="tourguidecardscontainer">
+          {filteredCards.length > 0 ? (
             <div className="tourguidebox">
-              {filteredCards.map((card, index) => (
+              {filteredCards.map((guide, index) => (
                 <div className="tourguidecard" key={index}>
                   <div className="imgBx">
-                    <img src={card.imageUrl} alt="CardImg" />
+                    <img src={guide.imgurl} alt="CardImg" />
                   </div>
                   <div className="tourguidedetails">
                     <h2>
-                      {card.name}
+                      {guide.name}
                       <br />
-                      <span>{card.role}</span>
-                      <button type="button" onClick={handleshowprofile}>
-                        {" "}
-                        showprofile{" "}
+                      <span>{guide.bio}</span>
+                      <button
+                        type="button"
+                        onClick={() => handleshowprofile(guide._id)}
+                      >
+                        Show Profile
                       </button>
                     </h2>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          ) : (
+            <div>No guides found</div>
+          )}
         </div>
       </div>
     </div>
