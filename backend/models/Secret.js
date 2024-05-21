@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
@@ -73,6 +74,25 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
+const UnknownSchema = new mongoose.Schema({
+    imageUrl: {
+        type:String,
+        required:true
+    },
+    titl: {
+        type:String,
+        required:true
+
+    },
+    subtitle: {
+        type:String,
+        required:true
+    }
+});
+
 const UserModel = mongoose.model("guide", UserSchema);
+const UnknownModel = mongoose.model("Unknown", UnknownSchema);
 
 module.exports = UserModel;
+module.exports = UnknownModel;
+
