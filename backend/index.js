@@ -1,3 +1,12 @@
+// const Guide = require("./models/Secret");
+// mongoose.connect(process.env.MONGODB_URI).then(() => 
+// {
+//     app.get("/api/guide", async (req, res) => 
+//     {
+//         const guide = await Guide.find();
+//         res.json(guide);
+//     });
+//     app.listen(PORT);
 
 require('dotenv').config(); 
 const express = require('express');

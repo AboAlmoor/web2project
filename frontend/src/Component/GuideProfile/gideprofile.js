@@ -5,6 +5,7 @@ import {faFacebook,faInstagram, faTwitter, faWhatsapp,} from "@fortawesome/free-
 import axios from "axios";
 import "./gideprofile.css";
 
+
 const Profile = () => {
   const [guideInfo, setGuideInfo] = useState(null);
   const { guideId } = useParams();
@@ -17,11 +18,42 @@ const Profile = () => {
     fetchGuideInfo();
   }, []);
 
+
+
+
+// const Profile = () => {
+//   const [guideInfo, setGuideInfo] = useState(null);
+
+//   useEffect(() => {
+//     async function fetchGuideInfo() {
+//         const response = await axios.get("http://localhost:5000/api/guide");
+//         setGuideInfo(response.data[0]); 
+//     }
+
+//     fetchGuideInfo();
+//   }, []);
+
   const generateStarRating = (rating) => {
     const stars = "⭐️".repeat(rating); 
     return stars;
   };
 
+  return (
+    <div className="profile-container">
+      {guideInfo && (
+        <>
+          <Header guide={guideInfo} generateStarRating={generateStarRating} />
+          <AboutMe guide={guideInfo.perinfo} />
+          <Languages guide={guideInfo.language} generateStarRating={generateStarRating} />
+          <SocialMediaLinks guide={guideInfo} />
+        </>
+      )}
+    </div>
+  );
+};
+
+const Header = ({ guide, generateStarRating }) => {
+  // Pass generateStarRating as a prop
   return (
     <div className="profile-container">
       {guideInfo && (
@@ -138,4 +170,6 @@ const SocialMediaLinks = ({ guide }) => {
   );
 };
 
+
 export default Profile;
+
