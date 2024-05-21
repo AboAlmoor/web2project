@@ -14,6 +14,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const UnknownModel = require('./models/Secret')
 const Guide = require("./models/Guide");
+const RestaurantModel =require('./models/Restaurant')
 
 
 const app = express();
@@ -28,6 +29,7 @@ mongoose.connect(process.env.MONGODB_URL)
 }).catch((error) => {
     console.log("error with connecting to DB ", error)
 })
+
 //mohamad & yazan 
 app.get('/getUnknown', async (req, res) => {
     try {
@@ -62,7 +64,15 @@ app.get("/api/guides/:id", async (req, res) => {
     res.json({ message: "Internal Server Error" });
   }
 });
+// abood 
+app.get('/getRestaurant' , (req, res) => {
+  RestaurantModel.find()
+  .then(Restaurant => res.json(Restaurant))
+  .catch(err => res.json(err))
+
+})
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
