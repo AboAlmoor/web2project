@@ -16,36 +16,37 @@ function CreateAccount() {
     };
     const navigate = useNavigate();
     const [confirmPassword, setConfirmPassword] = useState();
-    const [username,setusername] = useState();
-    const [email,setemail] = useState();
-    const [password,setpassword] = useState();
+    const [username, setusername] = useState();
+    const [email, setemail] = useState();
+    const [password, setpassword] = useState();
     const [country, setCountry] = useState();
-    const handleSubmit =async  (e) =>{
+    const handleSubmit = async (e) => {
 
         e.preventDefault();
         if (password !== confirmPassword) {
             alert('Passwords do not match');
             return;
 
+        }
+
+        try {
+            const sent = await axios.post('http://localhost:5000/Createacount', { username, email, password, confirmPassword, country });
+            if (sent.data.message === 'Account created successfully') {
+                alert('Account created successfully');
+                navigate('/LogIn');
             }
-        
-        try{
-        const sent =await axios.post('http://localhost:5000/Createacount',{username,email,password,confirmPassword,country});
-            if (sent.data.message === 'Account created successfully'){
-            alert('Account created successfully');
-            navigate('/LogIn');
+            else {
+                alert('Email already in use ');
             }
-            else{
-            alert('Email already in use');
-            }}
+        }
         catch (err) {
-            
-               
-            
-                console.error(err);
-        
-                alert('An error occurred. Please try again later.');
-            
+
+
+
+            console.error(err);
+
+            alert('An error occurred. Please try again later.');
+
         }
     };
 
@@ -59,11 +60,11 @@ function CreateAccount() {
                     <input type="text" className="CreateAcountUsername" name="username" placeholder="username" onChange={(e) => setusername(e.target.value)} required />
 
                     <label className='labelInputCreateAcount' htmlFor="email">Email</label>
-                    <input type="email" className="CreateAcountEmail" name="email" placeholder="email"  onChange={(e) => setemail(e.target.value)}required />
+                    <input type="email" className="CreateAcountEmail" name="email" placeholder="email" onChange={(e) => setemail(e.target.value)} required />
 
                     <div className="passwordContainerCreateAcount">
                         <label className='labelInputCreateAcount' htmlFor="password">Password</label>
-                        <input type={showPassword ? 'text' : 'password'} className="CreateAcountPassword" name="password" placeholder="password"   onChange={(e) => setpassword(e.target.value)}required />
+                        <input type={showPassword ? 'text' : 'password'} className="CreateAcountPassword" name="password" placeholder="password" onChange={(e) => setpassword(e.target.value)} required />
                         <svg id="togglePassword" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye-fill passwordIconCreateAcount" viewBox="0 0 16 16" onClick={togglePassword}>
                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
                             <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />

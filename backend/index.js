@@ -1,146 +1,120 @@
-// const Guide = require("./models/Secret");
-// mongoose.connect(process.env.MONGODB_URI).then(() => 
-// {
-//     app.get("/api/guide", async (req, res) => 
-//     {
-//         const guide = await Guide.find();
-//         res.json(guide);
-//     });
-//     app.listen(PORT);
+import dotenv from 'dotenv';
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
-require('dotenv').config(); 
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt')
-const path = require('path');
-const bodyParser = require('body-parser');
+import Guide from './models/Guide.js';
+import UnknownModel from './models/unknown.js';
+import SignupModel from './models/Signup.js';
+import PlacesModel from './models/Places.js';
+import RestaurantModel from'./models/Restaurant.js';
+import ProfilesModel from './models/Profiles.js';
+dotenv.config();
 
-const UnknownModel = require('./models/Secret')
-const Guide = require("./models/Guide");
-const RestaurantModel =require('./models/Restaurant')
-const PlacesModel = require("./models/Places");
-const SignupModel = require('./models/Signup');
-const places = require('./models/Places.js');
-const connectDB = require('./db/connection.js');
-const logIn = require('./models/logIn');
-const connectDB = require('./connection/connect');
-const ProfilesModel = require('./models/Profiles');
-import usersModel from './models/user.js';
-import { sendEmail } from './sendEmail.js';
-import { customAlphabet } from 'nanoid';
-
-const app = express();
 const PORT = process.env.PORT || 5000;
 
-dotenv.config();
-app.use(cors())
-app.use(express.json())
-app.use(bodyParser.json());
-connectDB();
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URL)
-.then(() => {
-    console.log("Connected Succesfully DB ")
-}).catch((error) => {
-    console.log("error with connecting to DB ", error)
-})
-
-//mohamad & yazan 
-app.get('/getUnknown', async (req, res) => {
-    try {
-        const unknown = await UnknownModel.find()
-        res.send(unknown)
-    }
-    catch (error) {
-        res.json(error)
-    }
-})
-
-//mhmad awawdy
-app.get("/api/guides", async (req, res) => {
-  try {
-    const guides = await Guide.find();
-    res.json(guides);
-  } catch (error) {
-    
-    res.json({ message: "Internal Server Error" });
-  }
-});
-
-// mohamad amad
-app.get("/api/guides/:id", async (req, res) => {
-  try {
-    const guide = await Guide.findById(req.params.id);
-    if (!guide) {
-      return res.json({ message: "Guide not found" });
-    }
-    res.json(guide);
-  } catch (error) {
-    console.error("Error fetching guide info:", error);
-    res.json({ message: "Internal Server Error" });
-  }
-});
-
-  app.get("/api/guides", async (req, res) => {
-    const searchTerm = req.query.searchTerm;
-  
-    try {
-      const searchQuery = searchTerm ? {
-        name: { $regex: new RegExp(searchTerm, 'i') } 
-      } : {};
-  
-      const guides = await Guide.find(searchQuery);
-      res.json(guides);
-    } catch (error) {
-      console.error("Error fetching guides:", error);
-      res.status(500).json({ message: "Internal Server Error" });
-    }
-  });
-
-
-app.post('/Createacount', async (req, res) => {
-  const { username, email, password, confirmPassword, country } = req.body;
-
-  try {
-    const existingUser = await SignupModel.findOne({ email });
-    if (existingUser) {
-      return res.json({ message: 'Email already in use' });
-    }
-
-    const passwordHash = await bcrypt.hash(password, 10);
-    const confirmPasswordHash = await bcrypt.hash(confirmPassword, 10);
-
-    const newUser = new SignupModel({
-      username,
-      email,
-      password: passwordHash,
-      confirmPassword: confirmPasswordHash,
-      country
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+        console.log("Connected Successfully to DB");
+    }).catch((error) => {
+        console.log("Error connecting to DB: ", error);
     });
 
-    const savedUser = await newUser.save();
-    res.json({ message: 'Account created successfully', user: savedUser });
-  } catch (err) {
-    
-    res.json({ message: 'Internal Server Error' });
-  }
+
+    //mohammad & yazan
+app.get('/getUnknown', async (req, res) => {
+    try {
+        const unknown = await UnknownModel.find();
+        res.send(unknown);
+    } catch (error) {
+        res.json(error);
+    }
 });
 
-// abood 
-app.get('/getRestaurant' , (req, res) => {
-  RestaurantModel.find()
-  .then(Restaurant => res.json(Restaurant))
-  .catch(err => res.json(err))
-
-})
-
-//ahmad 
-app.get('/getPlaces',  async (req, res) => {
+app.post('/api/auth/users', async (req, res) => {
+    const { email, newPassword } = req.body;
 
     try {
-        const allPlaces = await PlacesModel.find(); 
-        console.log(allPlaces);
+        const user = await SignupModel.findOne({ email });
+
+        if (!user) {
+            return res.send({ message: 'Email not found. Password has not been changed.' });
+        }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashedPassword;
+        await user.save();
+
+        res.send({ message: 'Password updated successfully' });
+    } catch (error) {
+        console.error(error);
+        res.send({ message: 'Internal server error' });
+    }
+});
+
+// amad
+app.get("/api/guides", async (req, res) => {
+    try {
+        const guides = await Guide.find();
+        res.json(guides);
+    } catch (error) {
+        res.json({ message: "Internal Server Error" });
+    }
+});
+
+app.get("/api/guides/:id", async (req, res) => {
+    try {
+        const guide = await Guide.findById(req.params.id);
+        if (!guide) {
+            return res.json({ message: "Guide not found" });
+        }
+        res.json(guide);
+    } catch (error) {
+        console.error("Error fetching guide info:", error);
+        res.json({ message: "Internal Server Error" });
+    }
+});
+
+app.post('/Createacount', async (req, res) => {
+    const { username, email, password, confirmPassword, country } = req.body;
+
+    try {
+        const existingUser = await SignupModel.findOne({ email });
+        if (existingUser) {
+            return res.json({ message: 'Email already use' });
+        }
+
+        const passwordHash = await bcrypt.hash(password, 10);
+        const confirmPasswordHash = await bcrypt.hash(confirmPassword, 10);
+
+        const newUser = new SignupModel({
+            username,
+            email,
+            password: passwordHash,
+            confirmPassword: confirmPasswordHash,
+            country
+        });
+
+        const savedUser = await newUser.save();
+        res.json({ message: 'Account created successfully', user: savedUser });
+    } catch (err) {
+
+        res.json({ message: 'Internal Server Error' });
+    }
+});
+
+
+//ahmad  
+
+app.get('/getPlaces', async (req, res) => {
+
+    try {
+        const allPlaces = await PlacesModel.find();
         res.json(allPlaces);
     } catch (err) {
         console.error('Error fetching places  info:', err);
@@ -150,20 +124,21 @@ app.get('/getPlaces',  async (req, res) => {
 
 // saleh 
 app.get('/search/:key', async (req, res) => {
-  
- 
-    let data = await places.find({
-       abbreviation : req.params.key
+
+
+    let data = await PlacesModel.find({
+        abbreviation: req.params.key
     });
 
     return res.json(data);
 
 });
 
+// saleh & ameer
 app.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
-        const user = await logIn.findOne({ username });
+        const user = await SignupModel.findOne({ username });
 
         if (!user) {
             return res.status(400).send("Invalid username or password");
@@ -184,7 +159,14 @@ app.post('/login', async (req, res) => {
     }
 });
 
-//ameer 
+// abood 
+app.get('/getRestaurant', async (req, res) => {
+    const restaurants = await RestaurantModel.find();
+    res.json(restaurants)
+
+})
+
+// ameer
 app.get('/getUsers', async (req, res) => {
     try {
         const ameer = await ProfilesModel.find();
@@ -218,7 +200,6 @@ app.post("/createUser", async (req, res) => {
     return res.json(user);
 })
 
-//ahmad & abood 
 app.get('/getUsers1',  async (req, res) => {
     try {
         const allusers = await usersModel.find();
@@ -231,6 +212,7 @@ app.get('/getUsers1',  async (req, res) => {
 });
 
 
+// ahmad & abood
 export const ForgotPassword = async (req, res) => {
     const { email } = req.body;
     console.log('Received email:', email); 
@@ -289,7 +271,6 @@ app.post('/verifyCode', async (req, res) => {
     }
 });
 
-
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });

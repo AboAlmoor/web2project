@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './LogIn.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const LogIn = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [message, setMessage] = useState('');
-
+    const navigate = useNavigate();
     const togglePassword = () => {
         setShowPassword(!showPassword);
     };
@@ -28,7 +28,7 @@ const LogIn = () => {
 
                 if (response.data === "Password match") {
                     setMessage('Login successful');
-                    resetForm();
+                    navigate('/');
                 } else {
                     setMessage('Invalid username or password');
                 }

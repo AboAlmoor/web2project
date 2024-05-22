@@ -9,7 +9,7 @@ const FindAccount = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const find = await fetch('http://localhost:4000/ForgotPassword', {
+            const find = await fetch('http://localhost:5000/ForgotPassword', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

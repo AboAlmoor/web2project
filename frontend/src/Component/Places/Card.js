@@ -10,7 +10,7 @@ const MainPage = () => {
     const [Places , setPlaces] = useState([]);
 
     useEffect(() => {
-      axios.get('http://localhost:4000/getPlaces')
+      axios.get('http://localhost:5000/getPlaces')
       .then(Places => setPlaces(Places.data))
       .catch(err => console.log(err));
     }, []);

@@ -31,7 +31,15 @@
 }
 
 
-
+.Head_card_res{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  max-width: 1180px; 
+  margin: auto; 
+  min-width: 550px;
+  margin-top: 20px;
+}
 
 
 
@@ -152,4 +160,3 @@
 .card-hover__extra span {
   color: #2d7f0b;
 }
-

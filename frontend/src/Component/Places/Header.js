@@ -1,10 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Header.css';
+import Navbar from '../Navbar/Navbar'
+
 
 const Header = () => {
     return (
         <>
+            <Navbar/>
             <div>
                 <div className="header-container">
                     <header id="header_places">

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -7,48 +8,48 @@ import FindAccount from './Component/ForgetPassword/ForgetPassword';
 import Guidesearch from './Component/Guidepage/Guidesearch';
 import GuideProfile from './Component/GuideProfile/gideprofile';
 import ImageCarousel from "./Component/KnowTheUnknown/KnowTheUnknown";
+import ResetPassword from "./Component/ResetPassword/ResetPassword";
+import MainNavbar from './Component/Navbar/Navbar'
+
+
 
 // abood
 import FooterRestaurant from './Component/Restaurant/Footer_res/Footer';
 import Footnotes from './Component/Restaurant/Footnotes/Footnotes';
 import DataCard from './Component/Restaurant/card_all_restaurants/Card_group';
 import MultipleCards from './Component/Restaurant/card_supporter/MultipleCards';
-import HeaderRes from './Component/Restaurant/Header_res/Header_res';
+// import HeaderRes from './Component/Restaurant/Header_res/Header_res';
+
 
 // ahmad 
 import FreePlanComponent from './Component/Places/FreePlanComponent';
 import FooterPlaces from './Component/Places/Footer';
 import MainPage from './Component/Places/Card';
-import Header from './Component/Places/Header';
+import Header from './Component/Places//Header';
 import Navbar from './Component/Places/P_Button_places';
-
+import EmailVerification from './Component/EnterEmailVerification/EmailVerification'
 // saleh
 import MainNavbar1 from './Component/MainPage/MainNavbar1';
 import MainIcons from './Component/MainPage/MainIcons';
 import MainCards from './Component/MainPage/MainCards';
 import MainFeatures1 from './Component/MainPage/MainFeatures1';
 import MainFooter from './Component/MainPage/MainFooter';
-
 // ameer
-import ProfileCover from "./Component/UserProfile/ProfileCover"; 
+import ProfileCover from "./Component/UserProfile/ProfileCover";
 import ProfileEdit from "./Component/EditProfile/ProfileEdit";
 
-
-import EmailVerification from './Component/EnterEmailVerification/EmailVerification';
-import ChangePassword from './Component/Changepss/ChangePassword';
-
-function RestaurantRoute(){
-  return(
+function RestaurantRoute() {
+  return (
     <>
-      <HeaderRes/>
-      <MultipleCards/>
-      <Footnotes/>
-      <DataCard/>
-      <FooterRestaurant/>
+      <MainNavbar />
+      {/* <HeaderRes/> */}
+      <MultipleCards />
+      <Footnotes />
+      <DataCard />
+      <FooterRestaurant />
     </>
   );
 }
-
 function HomePageRoute() {
   return (
     <>
@@ -60,7 +61,6 @@ function HomePageRoute() {
     </>
   );
 }
-
 function PlacesRoute() {
   return (
     <>
@@ -75,21 +75,32 @@ function PlacesRoute() {
 
 function App() {
   return (
+
     <div className="App">
       <Router>
         <Routes>
           <Route index path="/LogIn" element={<LogIn />} />
           <Route index path="/CreateAcount" element={<CreateAcount />} />
           <Route index path="/ForgetPassword" element={<FindAccount />} />
-          <Route index path="/email-verification" element={<EmailVerification />} />
-          <Route index path="/changePassword" element={<ChangePassword />} />
+          <Route index path="/EmailVerification" element={<EmailVerification />} />
 
           <Route path="/guidesearch" element={<Guidesearch />} />
           <Route path="/guideprofile/:guideId" element={<GuideProfile />} />
           <Route path="/KnowTheUnknown" element={<ImageCarousel />} />
-          <Route path="/Restaurant" element={<RestaurantRoute/>} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
+
+          {/* -------------------------------------------------------------------------- */}
+
+          <Route path="/Restaurant" element={<RestaurantRoute />} />
+
+
+          {/* ahmad */}
           <Route path="/Places" element={<PlacesRoute />} />
+
+          {/* saleh */}
           <Route path="/" element={<HomePageRoute />} />
+
+          {/* ameer */}
           <Route path="/ProfileComponents" element={<ProfileCover />} />
           <Route path="/editProfile" element={<ProfileEdit />} />
           <Route path="/Login" element={<LogIn />} />
@@ -98,5 +109,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

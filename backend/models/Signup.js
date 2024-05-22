@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
 const Signupschema = new mongoose.Schema({
     username:{
         type : String,
@@ -17,6 +18,9 @@ const Signupschema = new mongoose.Schema({
         type : String,
         required: true,
     },
+    newPassword:{
+        type : String,
+    } 
 })
-const SignupModel = mongoose.model("user",Signupschema)
-module.exports = SignupModel
+const SignupModel = mongoose.model("users",Signupschema)
+export default SignupModel;

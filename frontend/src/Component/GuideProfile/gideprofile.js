@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faFacebook,faInstagram, faTwitter, faWhatsapp,} from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram, faTwitter, faWhatsapp, } from "@fortawesome/free-brands-svg-icons";
 import axios from "axios";
 import "./gideprofile.css";
+import Navbar from '../Navbar/Navbar'
 
 
 const Profile = () => {
@@ -11,60 +13,33 @@ const Profile = () => {
   const { guideId } = useParams();
   useEffect(() => {
     async function fetchGuideInfo() {
-        const response = await axios.get(`http://localhost:5000/api/guides/${guideId}`);
-        setGuideInfo(response.data); 
+      const response = await axios.get(`http://localhost:5000/api/guides/${guideId}`);
+      setGuideInfo(response.data);
     }
 
     fetchGuideInfo();
-  }, []);
-
-
-
-
-// const Profile = () => {
-//   const [guideInfo, setGuideInfo] = useState(null);
-
-//   useEffect(() => {
-//     async function fetchGuideInfo() {
-//         const response = await axios.get("http://localhost:5000/api/guide");
-//         setGuideInfo(response.data[0]); 
-//     }
-
-//     fetchGuideInfo();
-//   }, []);
+  });
 
   const generateStarRating = (rating) => {
-    const stars = "⭐️".repeat(rating); 
+    const stars = "⭐️".repeat(rating);
     return stars;
   };
 
   return (
-    <div className="profile-container">
-      {guideInfo && (
-        <>
-          <Header guide={guideInfo} generateStarRating={generateStarRating} />
-          <AboutMe guide={guideInfo.perinfo} />
-          <Languages guide={guideInfo.language} generateStarRating={generateStarRating} />
-          <SocialMediaLinks guide={guideInfo} />
-        </>
-      )}
+    <div>
+      <Navbar />
+      <div className="profile-container">
+        {guideInfo && (
+          <>
+            <Header guide={guideInfo} generateStarRating={generateStarRating} />
+            <AboutMe guide={guideInfo.perinfo} />
+            <Languages guide={guideInfo.language} generateStarRating={generateStarRating} />
+            <SocialMediaLinks guide={guideInfo} />
+          </>
+        )}
+      </div>
     </div>
-  );
-};
 
-const Header = ({ guide, generateStarRating }) => {
-  // Pass generateStarRating as a prop
-  return (
-    <div className="profile-container">
-      {guideInfo && (
-        <>
-          <Header guide={guideInfo} generateStarRating={generateStarRating} />
-          <AboutMe guide={guideInfo.perinfo} />
-          <Languages guide={guideInfo.language} generateStarRating={generateStarRating} />
-          <SocialMediaLinks guide={guideInfo} />
-        </>
-      )}
-    </div>
   );
 };
 
@@ -72,12 +47,13 @@ const Header = ({ guide, generateStarRating }) => {
   // Pass generateStarRating as a prop
   return (
     <div className="header">
+
       <img src={guide.imgurl} alt="" className="profile-photo" />
       <h1 className="guide-name">{guide.name}</h1>
       <div className="guide-rating">
         {generateStarRating(guide.rating)}
       </div>{" "}
-      
+
       <p className="guide-title">{guide.bio}</p>
     </div>
   );
@@ -85,6 +61,7 @@ const Header = ({ guide, generateStarRating }) => {
 
 const AboutMe = ({ guide }) => (
   <div className="about-container">
+
     <div className="about-bio">
       <h2>About Me</h2>
       <p>{guide.about}</p>
@@ -170,6 +147,4 @@ const SocialMediaLinks = ({ guide }) => {
   );
 };
 
-
 export default Profile;
-

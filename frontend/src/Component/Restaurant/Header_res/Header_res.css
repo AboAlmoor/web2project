@@ -1,10 +1,68 @@
-.carousel-item {
-  height: 65vh;
-  min-height: 350px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  margin-bottom: 5px;
-} 
+/* Mhmad Awawdy 
+ The style was removed due to the task not being completed within the specified time
+Because the style was causing problems on other pages*/
+
+/* .carousel-item {
+    height: 65vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  } */
+  .Header_res-root {
+    font-size: 10px;
+    --heading-height: 40em;
+    background-color: #101010;
+}
+
+.Header_res-root body {
+    font-family: "Roboto", Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #101010;
+}
+
+.Header_res-root header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.Header_res-root header::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 6em;
+    width: 100%;
+    height: calc(var(--heading-height) + -5em);
+    z-index: -1;
+    transform: skewY(-3.5deg);
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+                url(https://buffer-media-uploads.s3.amazonaws.com/663f11ad81a7f4066c0e8e02/6641c29d1bd600a5d0028123/404fc01a9693f0ca237977d0865ed7e6.original.jpg) no-repeat center;
+    background-size: cover;
+    border-bottom: .2em solid #fff;
+}
+
+.Header_res-root h1 {
+    font-size: calc(2.8em + 2.6vw);
+    font-weight: 700;
+    letter-spacing: .01em;
+    padding: 10rem 0 0 4.5rem;
+    text-shadow: .022em .022em .022em #111;
+    color: #fff;
+}
+
+.Header_res-root main {
+    padding: calc(var(--heading-height) + 1.5vw) 4em 0;
+}
+
+.Header_res-root p {
+    font-size: calc(2em + .25vw);
+    font-weight: 400;
+    line-height: 2;
+    margin-bottom: 2.5em;
+    margin-top: -4em;
+    color: #fcfcfc;
+}

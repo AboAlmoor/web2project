@@ -1,24 +1,23 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
-const dataRestaurant = () => {
-    const [Restaurantdata , setRestaurantdata] = useState ([]);
+const useDataRestaurant = () => {
+    const [restaurantData, setRestaurantData] = useState([]);
 
-    useEffect(()=> {
-        const fetchdata = async () => {
-            try{
-                const res = await axios.get("http://localhost:3001/getRestaurant");
-                setRestaurantdata(res.data);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await axios.get('http://localhost:5000/getRestaurant');
+                setRestaurantData(res.data);
             } catch (error) {
-                console.error("Error fetching data" , error);
+                console.error('Error fetching data', error);
             }
         };
-        
-        fetchdata();
+
+        fetchData();
     }, []);
 
-    return Restaurantdata;
-
+    return restaurantData;
 };
 
-export default dataRestaurant;
+export default useDataRestaurant;

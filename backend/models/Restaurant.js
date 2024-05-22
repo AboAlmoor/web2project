@@ -1,20 +1,21 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 
 const RestaurantSchema = new mongoose.Schema({
     imageUrl:{
         type:String,
-        required:true
+        require:true 
     },
     title:{
         type:String,
-        required:true
+        require:true 
     },
     subtitle:{
         type:String,
-        required:true
+        require:true 
     }
 })
 
 
-const RestaurantModel =mongoose.model("Restaurant",RestaurantSchema)
-module.exports = RestaurantModel
+const RestaurantModel =mongoose.model("restaurants",RestaurantSchema)
+
+export default RestaurantModel;

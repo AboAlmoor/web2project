@@ -63,7 +63,7 @@ function AccountInfo() {
         }),
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             try {
-                const response = await axios.post('http://localhost:3001/createUser', values);
+                const response = await axios.post('http://localhost:5000/createUser', values);
                 console.log(response);
                 resetForm();
             } catch (error) {

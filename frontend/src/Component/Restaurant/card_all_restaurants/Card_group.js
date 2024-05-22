@@ -1,22 +1,27 @@
 import React from 'react';
 import CardRes from './Card_restaurants.js';
-import './Card_group.css'
+import './Card_group.css';
+import useDataRestaurant from '../dataBack/dataRes.js'; 
 
-function DataCard({restaurantData}) {
+
+function DataCard() {
+  const restaurantData = useDataRestaurant().slice(0,8);
+
   return (
     <>
-      <div className="Name_of_citiy" >
-        <h1 id="ramallah" >Ramallah</h1>
+      <div className="Name_of_citiy">
+        <h1>Restaurants</h1>
       </div>
 
       <div className="card_rees">
-
-      {
-      restaurantData.map((Restaurant) => (
-        <CardRes key={Restaurant.id} Restaurant={Restaurant} />
-      ))
-      }
-
+        {restaurantData.map((restaurant) => (
+          <CardRes 
+            key={restaurant._id}
+            imageUrl={restaurant.imageUrl}
+            title={restaurant.title}
+            subtitle={restaurant.subtitle}
+          />
+        ))}
       </div>
     </>
   );
