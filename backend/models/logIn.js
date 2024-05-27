@@ -4,17 +4,42 @@ const logInSchema = new mongoose.Schema({
 
     username: {
         type: String,
-        required: true
+        required: true,
     },
-
-
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
     password: {
         type: String,
-        required: true
+        required: true,
+    },
+    country: {
+        type: String,
+        required: true,
+    },
+    newPassword: {
+        type: String,
+    },
+    uploadedImageUrl: {
+        type: String,
     },
 
-}, { collection: "createacounts" });
+    uploadProfile: {
+        type: String,
+    },
+    bio: {
+        type: String,
+    },
 
-const logIn = mongoose.model('createacounts', logInSchema);
+    location: {
+        type: String,
+    },
+
+
+}, { collection: "users" });
+
+const logIn = mongoose.model('users', logInSchema);
 
 export default logIn;

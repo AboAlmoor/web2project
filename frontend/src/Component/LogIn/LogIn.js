@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 const LogIn = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [message, setMessage] = useState('');
@@ -15,28 +16,33 @@ const LogIn = () => {
 
     const formik = useFormik({
         initialValues: {
-            username: '',
+            email: '',
             password: '',
         },
         validationSchema: Yup.object({
-            username: Yup.string().required('Username is required'),
+            email: Yup.string().required('Email is required'),
             password: Yup.string().required('Password is required'),
         }),
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             try {
                 const response = await axios.post('http://localhost:5000/login', values);
 
-                if (response.data === "Password match") {
+                if (response.data.token) {
+                    localStorage.setItem('token', response.data.token);
+                    localStorage.setItem('username', response.data.username);
+                    localStorage.setItem('uploadedImageUrl', response.data.uploadedImageUrl);
+                    localStorage.setItem('uploadProfile', response.data.uploadProfile);
+                    localStorage.setItem('bio', response.data.bio);
+                    localStorage.setItem('country', response.data.country);
+
+                    
                     setMessage('Login successful');
                     navigate('/');
-                } else {
-                    setMessage('Invalid username or password');
                 }
-                
             } catch (error) {
                 if (error.response) {
                     if (error.response.status === 400 || error.response.status === 401) {
-                        setMessage('Invalid username or password');
+                        setMessage('Invalid email or password');
                     } else {
                         setMessage('An error occurred during login');
                     }
@@ -49,6 +55,8 @@ const LogIn = () => {
         },
     });
 
+
+
     return (
         <div className='CenteredContainer'>
             <div className="ContainerLogIn">
@@ -56,18 +64,18 @@ const LogIn = () => {
                 <h3 className='HeaderThreeLogIn'>Welcome Back To Secrets Of Cities</h3>
                 <form className='FormLogIn' onSubmit={formik.handleSubmit}>
                     <div>
-                        <label className='LabelLogIn' htmlFor="username">Username</label>
+                        <label className='LabelLogIn' htmlFor="emaik">Email</label>
                         <input
                             type="text"
                             className="InputUsernameLogIn"
-                            name="username"
-                            placeholder="Username"
+                            name="email"
+                            placeholder="Email"
                             required
                             onChange={formik.handleChange}
-                            value={formik.values.username}
+                            value={formik.values.email}
                         />
-                        {formik.touched.username && formik.errors.username ? (
-                            <div className="error-message">{formik.errors.username}</div>
+                        {formik.touched.email && formik.errors.email ? (
+                            <div className="error-message">{formik.errors.email}</div>
                         ) : null}
 
                     </div>

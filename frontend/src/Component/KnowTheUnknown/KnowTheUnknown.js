@@ -1,4 +1,5 @@
 import './KnowTheUnknown.css';
+import { useNavigate } from "react-router-dom";
 import BackGround_image from './Jericho-Palestine.jpg';
 import Navbar from "../Navbar/Navbar"
 import { useState, useEffect } from "react";
@@ -6,6 +7,7 @@ import axios from 'axios';
 
 function KnownTheUnknown() {
     const [unknownData, setUnknownData] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -16,10 +18,14 @@ function KnownTheUnknown() {
                 console.error("Can't fetch the data:", error);
             }
         };
-
+    
         fetchData();
     }, []);
 
+    const handleCardClick = (unknownPlace) => {
+        navigate("/PlacesKnowTheUnknown", { state: unknownPlace });
+    };
+    
     return (
         <div>
             <Navbar />
@@ -33,14 +39,16 @@ function KnownTheUnknown() {
                             {unknownData.map((unknownPlace, index) => (
                                 <div className="carousel-item" key={index}>
                                     <img className="carousel-item__img" src={unknownPlace.imageUrl} alt="places" />
-                                    <div className="carousel-item__details">
-                                        <div className="controls">
-                                            <span className="fas fa-play-circle"></span>
-                                            <span className="fas fa-plus-circle"></span>
+                                    <button onClick={() => handleCardClick(unknownPlace)}>
+                                        <div className="carousel-item__details">
+                                            <div className="controls">
+                                                <span className="fas fa-play-circle"></span>
+                                                <span className="fas fa-plus-circle"></span>
+                                            </div>
+                                            <span className="carousel-item__details--title">{unknownPlace.title}</span>
+                                            <h6 className="carousel-item__details--subtitle">Read More</h6>
                                         </div>
-                                        <h5 className="carousel-item__details--title">{unknownPlace.title}</h5>
-                                        <h6 className="carousel-item__details--subtitle">{unknownPlace.subtitle}</h6>
-                                    </div>
+                                    </button>
                                 </div>
                             ))}
                         </div>
@@ -49,5 +57,6 @@ function KnownTheUnknown() {
             </div>
         </div>
     );
-}
+};
+
 export default KnownTheUnknown;

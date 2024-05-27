@@ -1,5 +1,6 @@
-import React from 'react';
-import './Card_restaurants.css';
+import React from "react";
+import "./Card_restaurants.css";
+import { Link } from "react-router-dom";
 
 function CardRes({ imageUrl, title, subtitle }) {
   return (
@@ -9,7 +10,9 @@ function CardRes({ imageUrl, title, subtitle }) {
         <div className="card__content">
           <p className="card__title">{title}</p>
           <p className="card__description">{subtitle}</p>
-          <button className="card__button">Click Me</button>
+          <Link to="/FoodDishes">
+            <button className="card__button">Click Me</button>
+          </Link>
         </div>
       </div>
     </>

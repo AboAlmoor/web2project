@@ -10,7 +10,7 @@ const useDataRestaurant = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/getRestaurant');
+        const res = await axios.get('http://localhost:5000/getRestaurant');
         const lastFiveData = res.data.slice(8,13);
         const specificData = res.data;
         setRestaurantData(lastFiveData);

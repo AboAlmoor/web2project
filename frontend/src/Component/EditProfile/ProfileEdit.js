@@ -4,7 +4,7 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
-//import { use } from 'react';
+
 
 const uploader = Uploader({
     apiKey: "free"
@@ -18,8 +18,8 @@ const ProfileEdit = () => {
     const [uploadProfile, setUploadProfile] = useState(null);
     const [userName, setUserName] = useState("");
     const [bio, setBio] = useState("");
-    const [location , setLocation] = useState("");
-    const [joiningTime , setJoiningTime] = useState("");
+    const [country, setCountry] = useState("")
+    const [email , setEmail] = useState("");
     const navigate = useNavigate();
 
     
@@ -31,19 +31,40 @@ const ProfileEdit = () => {
         setBio(event.target.value);
     }
 
-    const handleLocation = (event) => {
-        setLocation(event.target.value);
+    const handleCountry = (event) => {
+        setCountry(event.target.value);
     }
 
-    const handleJoiningTime = (event) => {
-        setJoiningTime(event.target.value);
+
+    const handleEmail = (event) => {
+        setEmail(event.target.value);
     }
 
-    const handleSaveProfile = () => {
-        const profileData = { uploadedImageUrl, uploadProfile, userName, bio, location, joiningTime };
-        localStorage.setItem('profileData', JSON.stringify(profileData));
-        navigate("/ProfileComponents");
+    const handleSaveProfile = async () => {
+        const profileData = { email, uploadedImageUrl, uploadProfile, userName, bio, country};
+        
+        try {
+            const response = await fetch('http://localhost:5000/updateProfile', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(profileData)
+            });
+    
+            const data = await response.json();
+            if (data.message === 'Profile updated successfully') {
+                localStorage.setItem('profileData', JSON.stringify(profileData));
+                navigate("/ProfileComponents");
+            } else {
+                alert('Error updating profile');
+            }
+        } catch (error) {
+            console.error('Error updating profile:', error);
+            alert('An error occurred. Please try again later.');
+        }
     };
+    
 
     const handleCancel = () => {
         navigate("/ProfileComponents");
@@ -109,6 +130,17 @@ const ProfileEdit = () => {
             </div>
 
             <div className="form-group field">
+                <input 
+                    type="text" 
+                    className="form-field-2 " 
+                    placeholder="edit your name..." 
+                    name="name" id="name" required
+                    onChange={handleUserName}
+                    value={userName}
+                />
+            </div>
+
+            <div className="form-group field">
                 <input
                     type="text"
                     className="form-field-2 "
@@ -123,10 +155,10 @@ const ProfileEdit = () => {
                 <input 
                     type="text" 
                     className="form-field-2 " 
-                    placeholder="edit your name..." 
+                    placeholder="enter your country..." 
                     name="name" id="name" required
-                    onChange={handleUserName}
-                    value={userName}
+                    onChange={handleCountry}
+                    value={country}
                 />
             </div>
 
@@ -134,21 +166,10 @@ const ProfileEdit = () => {
                 <input 
                     type="text" 
                     className="form-field-2 " 
-                    placeholder="edit your location..." 
+                    placeholder="enter your email..." 
                     name="name" id="name" required
-                    onChange={handleLocation}
-                    value={location}
-                />
-            </div>
-
-            <div className="form-group field">
-                <input 
-                    type="text" 
-                    className="form-field-2 " 
-                    placeholder="edit your joining time..." 
-                    name="name" id="name" required
-                    onChange={handleJoiningTime}
-                    value={joiningTime}
+                    onChange={handleEmail}
+                    value={email}
                 />
             </div>
 

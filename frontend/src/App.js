@@ -10,6 +10,8 @@ import GuideProfile from './Component/GuideProfile/gideprofile';
 import ImageCarousel from "./Component/KnowTheUnknown/KnowTheUnknown";
 import ResetPassword from "./Component/ResetPassword/ResetPassword";
 import MainNavbar from './Component/Navbar/Navbar'
+import PlacesKnowTheUnknown from "./Component/PlacesKnowTheUnknown/PlacesKnowTheUnknown"
+import FoodDishes from "./Component/food/Food-Dishes"
 
 
 
@@ -44,8 +46,9 @@ function RestaurantRoute() {
       <MainNavbar />
       {/* <HeaderRes/> */}
       <MultipleCards />
-      <Footnotes />
       <DataCard />
+      <Footnotes />
+      
       <FooterRestaurant />
     </>
   );
@@ -88,8 +91,10 @@ function App() {
           <Route path="/guideprofile/:guideId" element={<GuideProfile />} />
           <Route path="/KnowTheUnknown" element={<ImageCarousel />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
+          <Route index path="/PlacesKnowTheUnknown" element={<PlacesKnowTheUnknown />} />
+          <Route path="/FoodDishes" element={<FoodDishes />} />
 
-          {/* -------------------------------------------------------------------------- */}
+
 
           <Route path="/Restaurant" element={<RestaurantRoute />} />
 
