@@ -5,18 +5,18 @@ import Guidesearchbackground from "./touguide.png";
 import "./Guidesearch.css";
 import Navbar from '../Navbar/Navbar'
 
-
 function Guidesearch() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [guideData, setGuideData] = useState([]);
+  const [filteredCards, setFilteredCards] = useState([]);
 
   useEffect(() => {
     async function fetchGuides() {
       try {
         const response = await axios.get("http://localhost:5000/api/guides");
-        
         setGuideData(response.data);
+        setFilteredCards(response.data);
       } catch (error) {
         console.error("Error fetching guides:", error);
       }
@@ -25,9 +25,13 @@ function Guidesearch() {
     fetchGuides();
   }, []);
 
-  const filteredCards = guideData.filter((guide) =>
-    guide.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleSearch = () => {
+    const trimmedSearchTerm = searchTerm.trim().toLowerCase();
+    const filtered = guideData.filter((guide) =>
+      guide.name.toLowerCase().includes(trimmedSearchTerm)
+    );
+    setFilteredCards(filtered);
+  };
 
   const handleshowprofile = (guideId) => {
     navigate(`/GuideProfile/${guideId}`);
@@ -35,7 +39,7 @@ function Guidesearch() {
 
   return (
     <div>
-          <Navbar/>
+      <Navbar />
       <div className="Guidepagecontainer">
         <div className="guidesearch">
           <div className="img-fluid containerguideimg">
@@ -43,7 +47,10 @@ function Guidesearch() {
           </div>
           <form
             className="tourguidesearchbar col-12"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSearch();
+            }}
           >
             <input
               type="text"

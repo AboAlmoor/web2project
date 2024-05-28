@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import '../UserProfile/ProfileCard1.css'
 import { FaLocationDot } from "react-icons/fa6";
-import { AiFillIdcard } from "react-icons/ai";
 import { SiBiolink } from "react-icons/si";
 
 const ProfileCard1 = () => {
-    const [bio, setBio] = useState("");
-    const [location, setLocation] = useState("");
-    const [joiningTime, setJoiningTime] = useState("");
+    const [bio, setBio] = useState(localStorage.getItem("bio")||"");
+    const [country, setCountry] = useState(localStorage.getItem("country") || "");
+
+    
     
 
     useEffect(() => {
         const savedProfile = JSON.parse(localStorage.getItem('profileData'));
         if (savedProfile) {
+
             setBio(savedProfile.bio);
-            setLocation(savedProfile.location);
-            setJoiningTime(savedProfile.joiningTime);
+            setCountry(savedProfile.country);
             
         }
     }, []);
@@ -28,10 +28,7 @@ const ProfileCard1 = () => {
                         <h2>Intro</h2>
                     </section>      
                     <section className="locAmeer">
-                        <FaLocationDot /> {location ||"Palestine - Salfit - Kafal Hares - Haret Laqn"}
-                    </section>
-                    <section className="joinAmeer">
-                        <AiFillIdcard /> {joiningTime ||"On Sunday after Friday prayers"}
+                        <FaLocationDot /> {country}
                     </section>
                     <section className="bioAmeer">
                         <SiBiolink /> {bio ||"bio"}

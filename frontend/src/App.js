@@ -13,15 +13,12 @@ import MainNavbar from './Component/Navbar/Navbar'
 import PlacesKnowTheUnknown from "./Component/PlacesKnowTheUnknown/PlacesKnowTheUnknown"
 import FoodDishes from "./Component/food/Food-Dishes"
 
-
-
 // abood
 import FooterRestaurant from './Component/Restaurant/Footer_res/Footer';
 import Footnotes from './Component/Restaurant/Footnotes/Footnotes';
 import DataCard from './Component/Restaurant/card_all_restaurants/Card_group';
 import MultipleCards from './Component/Restaurant/card_supporter/MultipleCards';
-// import HeaderRes from './Component/Restaurant/Header_res/Header_res';
-
+import HeaderRes from './Component/Restaurant/Header_res/Header_res';
 
 // ahmad 
 import FreePlanComponent from './Component/Places/FreePlanComponent';
@@ -30,12 +27,19 @@ import MainPage from './Component/Places/Card';
 import Header from './Component/Places//Header';
 import Navbar from './Component/Places/P_Button_places';
 import EmailVerification from './Component/EnterEmailVerification/EmailVerification'
+
+import HeaderMosq from './Component/Mosque/Header_Mosq/Header_Mosq';
+import DataCardMosq from './Component/Mosque/card_all_mosques/Card_group';
+import FootnotesMosq from './Component/Mosque/Footnotes/Footnotes';
+import FooterPlacesMosq from './Component/Mosque/Footer_Mosq/Footer';
+
 // saleh
 import MainNavbar1 from './Component/MainPage/MainNavbar1';
 import MainIcons from './Component/MainPage/MainIcons';
 import MainCards from './Component/MainPage/MainCards';
 import MainFeatures1 from './Component/MainPage/MainFeatures1';
 import MainFooter from './Component/MainPage/MainFooter';
+
 // ameer
 import ProfileCover from "./Component/UserProfile/ProfileCover";
 import ProfileEdit from "./Component/EditProfile/ProfileEdit";
@@ -44,12 +48,22 @@ function RestaurantRoute() {
   return (
     <>
       <MainNavbar />
-      {/* <HeaderRes/> */}
+      <HeaderRes/>
       <MultipleCards />
       <DataCard />
       <Footnotes />
-      
       <FooterRestaurant />
+    </>
+  );
+}
+function MosquesRoute() {
+  return (
+    <>
+      <MainNavbar />
+      <HeaderMosq />
+      <DataCardMosq />
+      <FootnotesMosq />
+      <FooterPlacesMosq />
     </>
   );
 }
@@ -93,14 +107,11 @@ function App() {
           <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route index path="/PlacesKnowTheUnknown" element={<PlacesKnowTheUnknown />} />
           <Route path="/FoodDishes" element={<FoodDishes />} />
-
-
-
           <Route path="/Restaurant" element={<RestaurantRoute />} />
-
 
           {/* ahmad */}
           <Route path="/Places" element={<PlacesRoute />} />
+          <Route path="/Mosques" element={<MosquesRoute />} />
 
           {/* saleh */}
           <Route path="/" element={<HomePageRoute />} />

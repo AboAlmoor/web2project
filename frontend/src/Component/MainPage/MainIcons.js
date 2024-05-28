@@ -11,11 +11,11 @@ function MainIcons() {
     <div className='icons-container shadow'>
       <Link to='/KnowTheUnknown' className="icon-link">
         <img src={unknown} alt="Non-unknown" className="icon-image" />
-        <div className="text-under-icon">Non-known</div>
+        <div className="text-under-icon">Known The Unknown</div>
       </Link>
       <Link to="/Places" className="icon-link">
         <img src={visit} alt="Place to Visit" className="icon-image" />
-        <div className="text-under-icon">Place to Visit</div>
+        <div className="text-under-icon">Places</div>
       </Link>
       <Link to="/Guidesearch" className="icon-link">
         <img src={guide} alt="Guide" className="icon-image" />

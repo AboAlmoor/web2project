@@ -4,13 +4,20 @@ import Guide from '../models/Guide.js';
 const router = express.Router();
 
 router.get("/api/guides", async (req, res) => {
+    const searchTerm = req.query.searchTerm;
+  
     try {
-        const guides = await Guide.find();
-        res.json(guides);
+      const searchQuery = searchTerm ? {
+        name: { $regex: new RegExp(searchTerm, 'i') } 
+      } : {};
+  
+      const guides = await Guide.find(searchQuery);
+      res.json(guides);
     } catch (error) {
-        res.json({ message: "Internal Server Error" });
+      console.error("Error fetching guides:", error);
+      res.status(500).json({ message: "Internal Server Error" });
     }
-});
+  });
 
 router.get("/api/guides/:id", async (req, res) => {
     try {

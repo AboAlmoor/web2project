@@ -1,5 +1,6 @@
 import express from "express";
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import SignupModel from '../models/Signup.js';
 
 const router = express.Router();

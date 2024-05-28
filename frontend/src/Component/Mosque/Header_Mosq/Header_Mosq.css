@@ -1,25 +1,26 @@
-.Header_res-roott {
+
+.Header_res-root {
     font-size: 10px;
     --heading-height: 25em;
     background-color: #101010;
     min-width: 560px;
 }
 
-.Header_res-roott body {
+.Header_res-root body {
 
     font-family: "Roboto", Arial, sans-serif;
     min-height: 100vh;
     background-color: #101010;
 }
 
-.Header_res-roott header {
+.Header_res-root header {
     position:absolute;
     width: 100%;
     z-index: 1000;
     min-width: 560px;
 }
 
-.Header_res-roott header::before {
+.Header_res-root header::before {
     content: "";
     display: block;
     position: absolute;
@@ -29,12 +30,12 @@
     height: 100%;
     z-index: -1;
     background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-                url(https://buffer-media-uploads.s3.amazonaws.com/663f11ad81a7f4066c0e8e02/6641c29d1bd600a5d0028123/404fc01a9693f0ca237977d0865ed7e6.original.jpg) no-repeat center;
+                url(https://safeimage.buffer.com/500,fit/https://buffer-media-uploads.s3.amazonaws.com/663e460bb658562fc402a8fd/6654f64fa9658a6dfe02552c/ba5e68096796a392435098266a8099b2.original.png) no-repeat center;
     background-size: cover;
     border-bottom: .2em solid #fff;
 }
 
-.Header_res-roott h1 {
+.Header_res-root h1 {
     font-size: calc(2.8em + 2.6vw);
     font-weight: 700;
     letter-spacing: .01em;
@@ -43,11 +44,11 @@
     color: #fff;
 }
 
-.Header_res-roott main {
+.Header_res-root main {
     padding: calc(var(--heading-height) + 1.5vw) 4em 0;
 }
 
-.Header_res-roott p {
+.Header_res-root p {
     font-size: calc(2em + .25vw);
     font-weight: 400;
     line-height: 2;

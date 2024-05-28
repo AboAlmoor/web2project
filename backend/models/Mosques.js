@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const RestaurantSchema = new mongoose.Schema({
+const mosques = new mongoose.Schema({
     imageUrl:{
         type:String,
         require:true 
@@ -19,6 +19,7 @@ const RestaurantSchema = new mongoose.Schema({
     }
 })
 
-const RestaurantModel =mongoose.model("restaurants",RestaurantSchema)
 
-export default RestaurantModel;
+const mosquesModel =mongoose.model("mosques",mosques)
+
+export default mosquesModel;

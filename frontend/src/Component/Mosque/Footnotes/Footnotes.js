@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footnotes.css';
-import useDataRestaurant from '../dataBack/dataRes';
+import useDataMosques from '../dataBack/dataMosq';
 
 function CardFootnotes({ children }) {
   return (
@@ -18,9 +18,9 @@ function Cardimg({ src, alt }) {
   );
 }
 
-function Footnotes() {
-  const restaurantData = useDataRestaurant();
-  const images = restaurantData[14]?.image||[];
+function FootnotesMosq() {
+  const mosquesData = useDataMosques();
+  const images = mosquesData[8]?.image||[];
 
   return (
     <div className="main-container">
@@ -37,4 +37,4 @@ function Footnotes() {
   );
 }
 
-export default Footnotes;
+export default FootnotesMosq;
