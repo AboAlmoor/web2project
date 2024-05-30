@@ -29,11 +29,7 @@ const LogIn = () => {
 
                 if (response.data.token) {
                     localStorage.setItem('token', response.data.token);
-                    localStorage.setItem('username', response.data.username);
-                    localStorage.setItem('uploadedImageUrl', response.data.uploadedImageUrl);
-                    localStorage.setItem('uploadProfile', response.data.uploadProfile);
-                    localStorage.setItem('bio', response.data.bio);
-                    localStorage.setItem('country', response.data.country);
+          
 
                     
                     setMessage('Login successful');
@@ -120,5 +116,4 @@ const LogIn = () => {
         </div>
     );
 };
-
 export default LogIn;

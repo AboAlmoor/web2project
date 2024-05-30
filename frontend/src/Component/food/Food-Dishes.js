@@ -1,76 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Food-Dishes.css';
-import Navbar from "../Navbar/Navbar";
+import Navbar from '../Navbar/Navbar.js';
+
+const Click = (locationUrl) => {
+    window.open(locationUrl, '_blank');
+};
+
+function Stars({ rate }) {
+    if (rate === undefined) {
+        return <div>unavailable</div>;
+    }
+    const stars = [];
+    for (let i = 0; i < rate; i++) {
+        stars.push(<i className="bi bi-star-fill" key={i}></i>);
+    }
+    return <div>{stars}</div>;
+}
+
+
 
 function FoodDishes() {
+    const [foodData, setFoodData] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/getFood')
+            .then(response => response.json())
+            .then(data => {
+                setFoodData(data);
+            })
+            .catch(error => console.error('error fetching data:', error));
+    }, []);
+
+    
     return (
         <div>
             <Navbar />
             <div className="container-food">
                 <main className="main-content-food">
-                    <section className="section-resturant">
-                        <div className="resturant-image-container">
-                            <img src= "" alt="City View" className="resturant-image" />
-                            <div className="resturant-name-location-Evaluation">
-                                <div className="resturant-info">
-                                    <div className="resturant-card">
-                                        <h2 className='header2-food'>Name Restaurant</h2>
-                                    </div>
-                                    <div className="resturant-card">
-                                        <h2 className='header2-food'>Evaluation</h2>
-                                    </div>
-                                    <div className="resturant-card">
-                                        <h2 className='header2-food'>Location</h2>
+                    {foodData.map((foodItem) => (
+                        <section className="section-resturant" key={foodItem._id}>
+                            <div className="resturant-image-container">
+                                <img src={foodItem.imageRes} alt={foodItem.NameRes} className="resturant-image" />
+                                <div className="resturant-name-location-Evaluation">
+                                    <div className="resturant-info">
+                                        <div className="resturant-card">
+                                            <h2 className='header2-food'>{foodItem.NameRes}</h2>
+                                        </div>
+                                        <div className="resturant-card">
+                                            <h2 className='header2-food'>
+                                                Evaluation: <Stars rate={foodItem.Rate} />
+                                            </h2>
+                                        </div>
+                                        <div className="resturant-card">
+                                            <h2 className='header2-food'>Location</h2>
+                                            <button onClick={() => Click(foodItem.location)} className="location-button">View Location</button>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <section className="food-section">
-                        <div className="food-resturant-item">
-                            <img src="" alt="Food 1" className="image-food-name" />
-                            <h3 className="header3-food">food name</h3>
-                            <p className="paragraph-food">Yantero shounak eniat ode w.</p>
-                        </div>
-                        <div className="food-resturant-item">
-                            <img src="" alt="Food 2" className="image-food-name" />
-                            <h3 className="header3-food">food name</h3>
-                            <p className="paragraph-food">Yantero shounak eniat ode w.</p>
-                        </div>
-                        <div className="food-resturant-item">
-                            <img src="" alt="Food 3" className="image-food-name" />
-                            <h3 className="header3-food">food name</h3>
-                            <p className="paragraph-food">Yantero shounak eniat ode w.</p>
-                        </div>
-                        <div className="food-resturant-item">
-                            <img src="" alt="Food 4" className="image-food-name" />
-                            <h3 className="header3-food">food name</h3>
-                            <p className="paragraph-food">Yantero shounak eniat ode w.</p>
-                        </div>
-                        <div className="food-resturant-item">
-                            <img src="" alt="Food 5" className="image-food-name" />
-                            <h3 className="header3-food">food name</h3>
-                            <p className="paragraph-food">Yantero shounak eniat ode w.</p>
-                        </div>
-                        <div className="food-resturant-item">
-                            <img src="" alt="Food 6" className="image-food-name" />
-                            <h3 className="header3-food">food name</h3>
-                            <p className="paragraph-food">Yantero shounak eniat ode w.</p>
-                        </div>
-                        <div className="food-resturant-item">
-                            <img src="" alt="Food 7" className="image-food-name" />
-                            <h3 className="header3-food">food name</h3>
-                            <p className="paragraph-food">Yantero shounak eniat ode w.</p>
-                        </div>
-                        <div className="food-resturant-item">
-                            <img src="" alt="Food 8" className="image-food-name" />
-                            <h3 className="header3-food">food name</h3>
-                            <p className="paragraph-food">Yantero shounak eniat ode w.</p>
-                        </div>
-                    </section>
+                            <section className="food-section">
+                                {foodItem.imageUrl.map((image, index) => (
+                                    <div className="food-resturant-item" key={index}>
+                                        <img src={image} alt={foodItem.title[index]} className="image-food-name" />
+                                        <h3 className="header3-food">{foodItem.title[index]}</h3>
+                                        <p className="paragraph-food">{foodItem.subtitle[index]}</p>
+                                    </div>
+                                ))}
+                            </section>
+                        </section>
+                    ))}
                 </main>
             </div>
         </div>
     );
 }
+
 export default FoodDishes;

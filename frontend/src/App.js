@@ -12,7 +12,7 @@ import ResetPassword from "./Component/ResetPassword/ResetPassword";
 import MainNavbar from './Component/Navbar/Navbar'
 import PlacesKnowTheUnknown from "./Component/PlacesKnowTheUnknown/PlacesKnowTheUnknown"
 import FoodDishes from "./Component/food/Food-Dishes"
-
+import OurTeam from "./Component/OurTeam/OurTeam";
 // abood
 import FooterRestaurant from './Component/Restaurant/Footer_res/Footer';
 import Footnotes from './Component/Restaurant/Footnotes/Footnotes';
@@ -108,6 +108,7 @@ function App() {
           <Route index path="/PlacesKnowTheUnknown" element={<PlacesKnowTheUnknown />} />
           <Route path="/FoodDishes" element={<FoodDishes />} />
           <Route path="/Restaurant" element={<RestaurantRoute />} />
+          <Route path="/OurTeam" element={<OurTeam />} />
 
           {/* ahmad */}
           <Route path="/Places" element={<PlacesRoute />} />

@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/getUnknown', async (req, res) => {
     try {
         const unknown = await UnknownModel.find();
-        res.send(unknown);
+        res.json(unknown);
     } catch (error) {
         res.json(error);
     }

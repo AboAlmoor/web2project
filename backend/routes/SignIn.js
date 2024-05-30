@@ -1,7 +1,7 @@
 import express from "express";
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 import SignupModel from '../models/Signup.js';
+import jwt from 'jsonwebtoken'
 
 const router = express.Router();
 
@@ -29,24 +29,47 @@ router.post('/login', async (req, res) => {
 });
 
 
-router.put('/updateProfile', async (req, res) => {
+router.put('/updateProfile/:token', async (req, res) => {
     const { email, uploadedImageUrl, uploadProfile, userName, bio, country } = req.body;
+    const { token } = req.params;  // Get token from req.params
+    const decodedToken= jwt.verify(token,'privateKey');
 
     try {
-        const user = await SignupModel.findOne({ email });
+        const user = await SignupModel.findOne({ _id:decodedToken._id });
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
 
        
+        user.email = email || user.email;
         user.username = userName || user.username;
         user.uploadedImageUrl = uploadedImageUrl || user.uploadedImageUrl;
         user.uploadProfile = uploadProfile || user.uploadProfile;
         user.bio = bio || user.bio;
         user.country = country || user.country;
+        console.log(user);
 
         await user.save();
+        res.json({ message: 'Profile updated successfully', user });
+    } catch (err) {
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+
+router.get('/getUserData/:token', async (req, res) => {
+    const { token } = req.params;  
+    const decodedToken= jwt.verify(token,'privateKey');
+    console.log(decodedToken);
+
+    
+    try {
+        const user = await SignupModel.findOne({ _id:decodedToken._id });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
         res.json({ message: 'Profile updated successfully', user });
     } catch (err) {
         res.status(500).json({ message: 'Internal Server Error' });

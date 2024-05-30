@@ -32,9 +32,24 @@
     text-decoration: underline;
 }
 
-.profileSecondNavbar .profileImage-Navbar {
-    width: 30px;
+.profileSecondNavbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.profileSecondNavbar .profileImage-Navbar {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 @media (max-width: 600px) {
@@ -51,20 +66,8 @@
         font-size: 14px;
     }
 
-    .profileSecondNavbar .profileImage-Navbar {
-        width: 25px;
+    .profileSecondNavbar {
+        width: 35px;
+        height: 35px;
     }
-}
-
-.profileSecondNavbar {
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-left: 190px;
-}
-
-.IconProfileSecondNavbar {
-    background: none;
-    border: none;
-    cursor: pointer;
 }

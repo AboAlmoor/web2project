@@ -19,7 +19,6 @@ const ProfileEdit = () => {
     const [userName, setUserName] = useState("");
     const [bio, setBio] = useState("");
     const [country, setCountry] = useState("")
-    const [email , setEmail] = useState("");
     const navigate = useNavigate();
 
     
@@ -35,16 +34,12 @@ const ProfileEdit = () => {
         setCountry(event.target.value);
     }
 
-
-    const handleEmail = (event) => {
-        setEmail(event.target.value);
-    }
-
     const handleSaveProfile = async () => {
-        const profileData = { email, uploadedImageUrl, uploadProfile, userName, bio, country};
+        const token = localStorage.getItem('token');
+        const profileData = {uploadedImageUrl, uploadProfile, userName, bio, country};
         
         try {
-            const response = await fetch('http://localhost:5000/updateProfile', {
+            const response = await fetch(`http://localhost:5000/updateProfile/${token}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -159,17 +154,6 @@ const ProfileEdit = () => {
                     name="name" id="name" required
                     onChange={handleCountry}
                     value={country}
-                />
-            </div>
-
-            <div className="form-group field">
-                <input 
-                    type="text" 
-                    className="form-field-2 " 
-                    placeholder="enter your email..." 
-                    name="name" id="name" required
-                    onChange={handleEmail}
-                    value={email}
                 />
             </div>
 

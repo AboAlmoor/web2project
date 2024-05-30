@@ -2,12 +2,26 @@ import React, { useState, useEffect } from 'react';
 import '../UserProfile/ProfileCard1.css'
 import { FaLocationDot } from "react-icons/fa6";
 import { SiBiolink } from "react-icons/si";
+import axios from 'axios';
 
 const ProfileCard1 = () => {
-    const [bio, setBio] = useState(localStorage.getItem("bio")||"");
-    const [country, setCountry] = useState(localStorage.getItem("country") || "");
+    const [bio, setBio] = useState("");
+    const [country, setCountry] = useState("");
 
-    
+    async function find() {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`http://localhost:5000/getUserData/${token}`);
+            setBio(response.data.user.bio);
+            setCountry(response.data.user.country);
+
+        
+        } catch (error) {
+            // setErrorMessage('An error occurred while searching');
+        }
+    }
+    find();
+
     
 
     useEffect(() => {

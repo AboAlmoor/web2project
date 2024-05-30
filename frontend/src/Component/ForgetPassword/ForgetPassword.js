@@ -4,6 +4,7 @@ import './ForgetPassword.css';
 
 const FindAccount = () => {
     const [email, setEmail] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -19,22 +20,20 @@ const FindAccount = () => {
             const result = await find.json({});
 
             if (find.ok) {
-                navigate('/email-verification'); 
+                navigate('/EmailVerification'); 
             } else {
                 console.error('Error:', result.message);
+                setErrorMessage(result.message || 'An error occurred. Please try again.');
             }
 
         } catch (error) {
             console.error('Error', error);
         }
     };
-
-
     const handleCancel = () => {
-        navigate('/');
+        navigate('/LogIn');
         console.log('Cancel button clicked');
     };
-
     return (
         <div className='CenteredContainer'>
             <div className="ContainerForgetPassword">
@@ -52,6 +51,7 @@ const FindAccount = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
+                    {errorMessage && <p className='ErrorMessage'>{errorMessage}</p>}
                     <button className='ButtonSearchForgetPassword' type="submit">Search</button>
                     <button className='ButtonCancelForgetPassword' type="button" onClick={handleCancel}>Cancel</button>
                 </form>

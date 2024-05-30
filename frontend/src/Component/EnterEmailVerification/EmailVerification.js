@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './EmailVerification.css';
-
 const EmailVerification = () => {
     const [code, setCode] = useState('');
     const navigate = useNavigate();
@@ -18,7 +17,7 @@ const EmailVerification = () => {
             const result = await response.json();
             if (response.ok) {
                 console.log('Code verified:', result);
-                navigate('/changePassword');
+                navigate('/reset-password/:token');
             } else {
                 console.error('Error:', result.message);
             }
@@ -26,19 +25,16 @@ const EmailVerification = () => {
             console.error('Error:', error);
         }
     };
-
     const handleCancel = () => {
         navigate('/ForgotPassword');
         console.log('Cancel button clicked');
     };
-
     return (
         <div className='CenteredContainer'>
             <div className="container-verification">
                 <h1 className='header-verification'>Enter the code</h1>
                 <hr />
                 <p className='paragraph-verification'>Please enter the code that you received in your email.</p>
-
                 <form onSubmit={handleSubmit}>
                     <label className='label-verification' htmlFor="code"></label>
                     <input

@@ -8,7 +8,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { SearchContext } from './SearchContext';
-import { TbLogout } from "react-icons/tb";
+
 
 function MainNavbar1() {
     const navigate = useNavigate();
@@ -16,8 +16,18 @@ function MainNavbar1() {
     const [abbName, setabbName] = useState('');
     const { setSearchResults } = useContext(SearchContext);
     const [errorMessage, setErrorMessage] = useState('');
-    const [uploadProfile, setUploadProfile] = useState(localStorage.getItem('uploadProfile'));
-
+    const [uploadProfile, setUploadProfile] = useState("");
+    async function find() {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`http://localhost:5000/getUserData/${token}`);
+            setUploadProfile(response.data.user.uploadProfile);
+        
+        } catch (error) {
+          
+        }
+    }
+    find();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -36,14 +46,7 @@ function MainNavbar1() {
         navigate("/ProfileComponents");
     };
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('username');
-        localStorage.removeItem('profileData');
-        localStorage.removeItem('uploadProfile');
-        setIsLoggedIn(false);
-        navigate("/Login");
-    };
+ 
 
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
@@ -121,9 +124,6 @@ function MainNavbar1() {
                                                         <BsPersonCircle className='profile-logo' style={{ color: 'white' }} />
                                                     )}
                                                 </button>
-                                                <div className="menuAmeer-button" onClick={handleLogout}>
-                                                    <TbLogout size={24} color="red" />
-                                                </div>
                                             </Nav.Item>
                                         )}
                                     </Nav>

@@ -15,7 +15,7 @@ import HomePage from "./routes/HomePage.js";
 import Profile from "./routes/Profile.js";
 import Forgetpass from "./routes/ForgitPass.js";
 import mosques from "./routes/Mosques.js";
-
+import Food from './routes/Food.js';
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -31,7 +31,7 @@ app.use(HomePage);
 app.use(Profile);
 app.use(Forgetpass);
 app.use(mosques);
-
+app.use(Food);
 mongoose.connect(process.env.MONGODB_URI).then(() => 
 {
     console.log("Connected Successfully to DB");
