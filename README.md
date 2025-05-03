@@ -1,5 +1,4 @@
 # Secrets of Cities 🌍✨  
-*Discover Hidden Gems & Book Local Guides*  
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) 
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) 
@@ -42,18 +41,23 @@ A **full-stack tourism platform** that connects travelers with:
 
 ---
 
-## 📸 Screenshots  
-| Page             | Preview                          |
-|------------------|----------------------------------|
-| Homepage         | ![Home](https://via.placeholder.com/400x200?text=Discover+Hidden+Gems) |
-| Trip Planner     | ![Planner](https://via.placeholder.com/400x200?text=Custom+Itineraries) |
+## 🚀 Business Model
+- Revenue Streams:
+  - 30% commission from guide bookings.
+  - Premium subscriptions for curated itineraries.
+- Projection: $1M+ in 12 months.
 
 ---
 
-## 🏗️ Project Structure  
-```bash
-.
-├── client/          # React app (public/, src/components/)
-├── server/          # Node.js (routes/, controllers/)
-├── models/          # MongoDB schemas
-└── docs/            # Pitch deck, business plan
+## 🌟 Why Choose Us?
+- ✅ First-Mover Advantage: Unique focus on offbeat locations.
+- ✅ Cost-Effective: Save 20-40% compared to traditional agencies.
+- ✅ Local Partnerships: Collaborations with festivals like Palestine Marathon.
+
+---
+
+## 🚧 Challenges & Learnings
+- Data Scarcity: Curating info on unknown sites required grassroots research.
+- Trust Building: Implementing guide verification systems.
+- Tech Stack: Mastering geo-mapping (Leaflet) and real-time bookings.
+
