@@ -39,7 +39,7 @@ A **full-stack tourism platform** that connects travelers with:
 - **Unique Edge**: First platform focusing on *unknown places* + *trip scheduling*  
 
 
-## 🚀 Business Model
+## 💼 Business Model
 - Revenue Streams:
   - 30% commission from guide bookings.
   - Premium subscriptions for curated itineraries.
